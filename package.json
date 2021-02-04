@@ -1,0 +1,40 @@
+{
+  "name": "gz-heatmap",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Produce a heatmap of gzip files to better understand how gzip compresses your code",
+  "main": "src/index.js",
+  "bin": {
+    "gz-heatmap": "bin/gz-heatmap.js"
+  },
+  "scripts": {
+    "test": "uvu tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewiggins/gz-heatmap.git"
+  },
+  "keywords": [
+    "gzip",
+    "heatmap",
+    "gzthermal",
+    "compression",
+    "visualization"
+  ],
+  "author": "Andre Wiggins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrewiggins/gz-heatmap/issues"
+  },
+  "homepage": "https://github.com/andrewiggins/gz-heatmap#readme",
+  "files": [
+    "src",
+    "bin"
+  ],
+  "devDependencies": {
+    "uvu": "^0.5.1"
+  },
+  "dependencies": {
+    "sade": "^1.7.4"
+  }
+}
