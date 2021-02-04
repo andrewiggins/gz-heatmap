@@ -1,0 +1,2274 @@
+[
+  {
+    "type": "gzip_header",
+    "bytes": {
+      "type": "Buffer",
+      "data": [
+        31,
+        139,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "type": "bfinal",
+    "value": {
+      "bits": 1,
+      "size": 1,
+      "decoded": 1
+    }
+  },
+  {
+    "type": "btype",
+    "value": {
+      "bits": 2,
+      "size": 2,
+      "decoded": 2
+    }
+  },
+  {
+    "type": "hlit",
+    "value": {
+      "bits": 10,
+      "size": 5,
+      "decoded": 267
+    }
+  },
+  {
+    "type": "hdist",
+    "value": {
+      "bits": 12,
+      "size": 5,
+      "decoded": 13
+    }
+  },
+  {
+    "type": "hclen",
+    "value": {
+      "bits": 14,
+      "size": 4,
+      "decoded": 18
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 4,
+    "char": 16,
+    "value": {
+      "bits": 4,
+      "size": 3,
+      "decoded": 4
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 3,
+    "char": 17,
+    "value": {
+      "bits": 3,
+      "size": 3,
+      "decoded": 3
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 4,
+    "char": 18,
+    "value": {
+      "bits": 4,
+      "size": 3,
+      "decoded": 4
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 2,
+    "char": 0,
+    "value": {
+      "bits": 2,
+      "size": 3,
+      "decoded": 2
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 0,
+    "char": 8,
+    "value": {
+      "bits": 0,
+      "size": 3,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 0,
+    "char": 7,
+    "value": {
+      "bits": 0,
+      "size": 3,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 0,
+    "char": 9,
+    "value": {
+      "bits": 0,
+      "size": 3,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 2,
+    "char": 6,
+    "value": {
+      "bits": 2,
+      "size": 3,
+      "decoded": 2
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 0,
+    "char": 10,
+    "value": {
+      "bits": 0,
+      "size": 3,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 3,
+    "char": 5,
+    "value": {
+      "bits": 3,
+      "size": 3,
+      "decoded": 3
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 0,
+    "char": 11,
+    "value": {
+      "bits": 0,
+      "size": 3,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 4,
+    "char": 4,
+    "value": {
+      "bits": 4,
+      "size": 3,
+      "decoded": 4
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 0,
+    "char": 12,
+    "value": {
+      "bits": 0,
+      "size": 3,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 0,
+    "char": 3,
+    "value": {
+      "bits": 0,
+      "size": 3,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 0,
+    "char": 13,
+    "value": {
+      "bits": 0,
+      "size": 3,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 5,
+    "char": 2,
+    "value": {
+      "bits": 5,
+      "size": 3,
+      "decoded": 5
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 0,
+    "char": 14,
+    "value": {
+      "bits": 0,
+      "size": 3,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "run_length_table",
+    "huffmanCodeLength": 5,
+    "char": 1,
+    "value": {
+      "bits": 5,
+      "size": 3,
+      "decoded": 5
+    }
+  },
+  {
+    "type": "repeat_code_length",
+    "huffmanCodeLength": 0,
+    "category": "lz77_length_table",
+    "chars": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "symbol": {
+      "bits": 14,
+      "size": 4,
+      "decoded": 18
+    },
+    "repeatCount": {
+      "bits": 21,
+      "size": 7,
+      "decoded": 32
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 4,
+    "char": 32,
+    "value": {
+      "bits": 12,
+      "size": 4,
+      "decoded": 4
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 0,
+    "char": 33,
+    "value": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 4,
+    "char": 34,
+    "value": {
+      "bits": 12,
+      "size": 4,
+      "decoded": 4
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 35,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "repeat_code_length",
+    "huffmanCodeLength": 0,
+    "category": "lz77_length_table",
+    "chars": [
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
+    ],
+    "symbol": {
+      "bits": 5,
+      "size": 3,
+      "decoded": 17
+    },
+    "repeatCount": {
+      "bits": 7,
+      "size": 3,
+      "decoded": 10
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 46,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 4,
+    "char": 47,
+    "value": {
+      "bits": 12,
+      "size": 4,
+      "decoded": 4
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 4,
+    "char": 48,
+    "value": {
+      "bits": 12,
+      "size": 4,
+      "decoded": 4
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 0,
+    "char": 49,
+    "value": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 5,
+    "char": 50,
+    "value": {
+      "bits": 4,
+      "size": 3,
+      "decoded": 5
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 5,
+    "char": 51,
+    "value": {
+      "bits": 4,
+      "size": 3,
+      "decoded": 5
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 0,
+    "char": 52,
+    "value": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 53,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "repeat_code_length",
+    "huffmanCodeLength": 0,
+    "category": "lz77_length_table",
+    "chars": [
+      54,
+      55,
+      56,
+      57
+    ],
+    "symbol": {
+      "bits": 5,
+      "size": 3,
+      "decoded": 17
+    },
+    "repeatCount": {
+      "bits": 1,
+      "size": 3,
+      "decoded": 4
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 58,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 0,
+    "char": 59,
+    "value": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 60,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 5,
+    "char": 61,
+    "value": {
+      "bits": 4,
+      "size": 3,
+      "decoded": 5
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 62,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "repeat_code_length",
+    "huffmanCodeLength": 0,
+    "category": "lz77_length_table",
+    "chars": [
+      63,
+      64,
+      65
+    ],
+    "symbol": {
+      "bits": 5,
+      "size": 3,
+      "decoded": 17
+    },
+    "repeatCount": {
+      "bits": 0,
+      "size": 3,
+      "decoded": 3
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 66,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "repeat_code_length",
+    "huffmanCodeLength": 0,
+    "category": "lz77_length_table",
+    "chars": [
+      67,
+      68,
+      69,
+      70,
+      71
+    ],
+    "symbol": {
+      "bits": 5,
+      "size": 3,
+      "decoded": 17
+    },
+    "repeatCount": {
+      "bits": 2,
+      "size": 3,
+      "decoded": 5
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 72,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "repeat_code_length",
+    "huffmanCodeLength": 0,
+    "category": "lz77_length_table",
+    "chars": [
+      73,
+      74,
+      75,
+      76
+    ],
+    "symbol": {
+      "bits": 5,
+      "size": 3,
+      "decoded": 17
+    },
+    "repeatCount": {
+      "bits": 1,
+      "size": 3,
+      "decoded": 4
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 77,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "repeat_code_length",
+    "huffmanCodeLength": 0,
+    "category": "lz77_length_table",
+    "chars": [
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96
+    ],
+    "symbol": {
+      "bits": 14,
+      "size": 4,
+      "decoded": 18
+    },
+    "repeatCount": {
+      "bits": 8,
+      "size": 7,
+      "decoded": 19
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 97,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 0,
+    "char": 98,
+    "value": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 0,
+    "char": 99,
+    "value": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 100,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "repeat_code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "chars": [
+      101,
+      102,
+      103
+    ],
+    "symbol": {
+      "bits": 13,
+      "size": 4,
+      "decoded": 16
+    },
+    "repeatCount": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 3
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 5,
+    "char": 104,
+    "value": {
+      "bits": 4,
+      "size": 3,
+      "decoded": 5
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 105,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 0,
+    "char": 106,
+    "value": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 0,
+    "char": 107,
+    "value": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 5,
+    "char": 108,
+    "value": {
+      "bits": 4,
+      "size": 3,
+      "decoded": 5
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 109,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "repeat_code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "chars": [
+      110,
+      111,
+      112
+    ],
+    "symbol": {
+      "bits": 13,
+      "size": 4,
+      "decoded": 16
+    },
+    "repeatCount": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 3
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 0,
+    "char": 113,
+    "value": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 114,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 115,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 5,
+    "char": 116,
+    "value": {
+      "bits": 4,
+      "size": 3,
+      "decoded": 5
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 0,
+    "char": 117,
+    "value": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 5,
+    "char": 118,
+    "value": {
+      "bits": 4,
+      "size": 3,
+      "decoded": 5
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 4,
+    "char": 119,
+    "value": {
+      "bits": 12,
+      "size": 4,
+      "decoded": 4
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 120,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 0,
+    "char": 121,
+    "value": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 122,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "repeat_code_length",
+    "huffmanCodeLength": 0,
+    "category": "lz77_length_table",
+    "chars": [
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199,
+      200,
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223,
+      224,
+      225,
+      226,
+      227,
+      228,
+      229,
+      230,
+      231,
+      232,
+      233,
+      234,
+      235,
+      236,
+      237,
+      238,
+      239,
+      240,
+      241,
+      242,
+      243,
+      244,
+      245,
+      246,
+      247,
+      248,
+      249,
+      250,
+      251,
+      252,
+      253,
+      254,
+      255
+    ],
+    "symbol": {
+      "bits": 14,
+      "size": 4,
+      "decoded": 18
+    },
+    "repeatCount": {
+      "bits": 122,
+      "size": 7,
+      "decoded": 133
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 256,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 5,
+    "char": 257,
+    "value": {
+      "bits": 4,
+      "size": 3,
+      "decoded": 5
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 258,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 259,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 260,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "repeat_code_length",
+    "huffmanCodeLength": 0,
+    "category": "lz77_length_table",
+    "chars": [
+      261,
+      262,
+      263,
+      264,
+      265
+    ],
+    "symbol": {
+      "bits": 5,
+      "size": 3,
+      "decoded": 17
+    },
+    "repeatCount": {
+      "bits": 2,
+      "size": 3,
+      "decoded": 5
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_length_table",
+    "huffmanCodeLength": 6,
+    "char": 266,
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 6
+    }
+  },
+  {
+    "type": "repeat_code_length",
+    "huffmanCodeLength": 0,
+    "category": "lz77_dist_table",
+    "chars": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "symbol": {
+      "bits": 5,
+      "size": 3,
+      "decoded": 17
+    },
+    "repeatCount": {
+      "bits": 6,
+      "size": 3,
+      "decoded": 9
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_dist_table",
+    "huffmanCodeLength": 2,
+    "char": 9,
+    "value": {
+      "bits": 31,
+      "size": 5,
+      "decoded": 2
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_dist_table",
+    "huffmanCodeLength": 1,
+    "char": 10,
+    "value": {
+      "bits": 30,
+      "size": 5,
+      "decoded": 1
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_dist_table",
+    "huffmanCodeLength": 0,
+    "char": 11,
+    "value": {
+      "bits": 0,
+      "size": 2,
+      "decoded": 0
+    }
+  },
+  {
+    "type": "code_length",
+    "category": "lz77_dist_table",
+    "huffmanCodeLength": 2,
+    "char": 12,
+    "value": {
+      "bits": 31,
+      "size": 5,
+      "decoded": 2
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 40,
+      "size": 6,
+      "decoded": 60
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 56,
+      "size": 6,
+      "decoded": 115
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 16,
+      "size": 5,
+      "decoded": 118
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 49,
+      "size": 6,
+      "decoded": 103
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 0,
+      "size": 4,
+      "decoded": 32
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 57,
+      "size": 6,
+      "decoded": 120
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 51,
+      "size": 6,
+      "decoded": 109
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 14,
+      "size": 5,
+      "decoded": 108
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 52,
+      "size": 6,
+      "decoded": 110
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 56,
+      "size": 6,
+      "decoded": 115
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 12,
+      "size": 5,
+      "decoded": 61
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 1,
+      "size": 4,
+      "decoded": 34
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 13,
+      "size": 5,
+      "decoded": 104
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 15,
+      "size": 5,
+      "decoded": 116
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 15,
+      "size": 5,
+      "decoded": 116
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 54,
+      "size": 6,
+      "decoded": 112
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 39,
+      "size": 6,
+      "decoded": 58
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 2,
+      "size": 4,
+      "decoded": 47
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 2,
+      "size": 4,
+      "decoded": 47
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 4,
+      "size": 4,
+      "decoded": 119
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 4,
+      "size": 4,
+      "decoded": 119
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 4,
+      "size": 4,
+      "decoded": 119
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 37,
+      "size": 6,
+      "decoded": 46
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 4,
+      "size": 4,
+      "decoded": 119
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 11,
+      "size": 5,
+      "decoded": 51
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 37,
+      "size": 6,
+      "decoded": 46
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 53,
+      "size": 6,
+      "decoded": 111
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 55,
+      "size": 6,
+      "decoded": 114
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 49,
+      "size": 6,
+      "decoded": 103
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 2,
+      "size": 4,
+      "decoded": 47
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 10,
+      "size": 5,
+      "decoded": 50
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 3,
+      "size": 4,
+      "decoded": 48
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 3,
+      "size": 4,
+      "decoded": 48
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 3,
+      "size": 4,
+      "decoded": 48
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 2,
+      "size": 4,
+      "decoded": 47
+    }
+  },
+  {
+    "type": "lz77",
+    "chars": [
+      115,
+      118,
+      103
+    ],
+    "length": {
+      "value": 3,
+      "symbol": {
+        "bits": 17,
+        "size": 5,
+        "decoded": 257
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 0,
+        "decoded": 0
+      }
+    },
+    "dist": {
+      "value": 34,
+      "symbol": {
+        "bits": 0,
+        "size": 1,
+        "decoded": 10
+      },
+      "extraBits": {
+        "bits": 1,
+        "size": 4,
+        "decoded": 1
+      }
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 1,
+      "size": 4,
+      "decoded": 34
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 0,
+      "size": 4,
+      "decoded": 32
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 16,
+      "size": 5,
+      "decoded": 118
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 50,
+      "size": 6,
+      "decoded": 105
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 47,
+      "size": 6,
+      "decoded": 101
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 4,
+      "size": 4,
+      "decoded": 119
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 42,
+      "size": 6,
+      "decoded": 66
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 53,
+      "size": 6,
+      "decoded": 111
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 57,
+      "size": 6,
+      "decoded": 120
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 12,
+      "size": 5,
+      "decoded": 61
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 1,
+      "size": 4,
+      "decoded": 34
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 3,
+      "size": 4,
+      "decoded": 48
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 0,
+      "size": 4,
+      "decoded": 32
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 3,
+      "size": 4,
+      "decoded": 48
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 0,
+      "size": 4,
+      "decoded": 32
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 38,
+      "size": 6,
+      "decoded": 53
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 0,
+      "size": 4,
+      "decoded": 32
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 38,
+      "size": 6,
+      "decoded": 53
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 1,
+      "size": 4,
+      "decoded": 34
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 41,
+      "size": 6,
+      "decoded": 62
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 40,
+      "size": 6,
+      "decoded": 60
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 54,
+      "size": 6,
+      "decoded": 112
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 45,
+      "size": 6,
+      "decoded": 97
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 15,
+      "size": 5,
+      "decoded": 116
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 13,
+      "size": 5,
+      "decoded": 104
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 0,
+      "size": 4,
+      "decoded": 32
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 48,
+      "size": 6,
+      "decoded": 102
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 50,
+      "size": 6,
+      "decoded": 105
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 14,
+      "size": 5,
+      "decoded": 108
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 14,
+      "size": 5,
+      "decoded": 108
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 12,
+      "size": 5,
+      "decoded": 61
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 1,
+      "size": 4,
+      "decoded": 34
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 55,
+      "size": 6,
+      "decoded": 114
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 47,
+      "size": 6,
+      "decoded": 101
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 46,
+      "size": 6,
+      "decoded": 100
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 1,
+      "size": 4,
+      "decoded": 34
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 0,
+      "size": 4,
+      "decoded": 32
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 46,
+      "size": 6,
+      "decoded": 100
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 12,
+      "size": 5,
+      "decoded": 61
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 1,
+      "size": 4,
+      "decoded": 34
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 44,
+      "size": 6,
+      "decoded": 77
+    }
+  },
+  {
+    "type": "lz77",
+    "chars": [
+      48,
+      32,
+      48
+    ],
+    "length": {
+      "value": 3,
+      "symbol": {
+        "bits": 17,
+        "size": 5,
+        "decoded": 257
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 0,
+        "decoded": 0
+      }
+    },
+    "dist": {
+      "value": 30,
+      "symbol": {
+        "bits": 2,
+        "size": 2,
+        "decoded": 9
+      },
+      "extraBits": {
+        "bits": 5,
+        "size": 3,
+        "decoded": 5
+      }
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 13,
+      "size": 5,
+      "decoded": 104
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 11,
+      "size": 5,
+      "decoded": 51
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 16,
+      "size": 5,
+      "decoded": 118
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 11,
+      "size": 5,
+      "decoded": 51
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 43,
+      "size": 6,
+      "decoded": 72
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 3,
+      "size": 4,
+      "decoded": 48
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 58,
+      "size": 6,
+      "decoded": 122
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 1,
+      "size": 4,
+      "decoded": 34
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 2,
+      "size": 4,
+      "decoded": 47
+    }
+  },
+  {
+    "type": "lz77",
+    "chars": [
+      62,
+      60,
+      112,
+      97,
+      116,
+      104,
+      32,
+      102,
+      105,
+      108,
+      108,
+      61,
+      34
+    ],
+    "length": {
+      "value": 13,
+      "symbol": {
+        "bits": 63,
+        "size": 6,
+        "decoded": 266
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 1,
+        "decoded": 0
+      }
+    },
+    "dist": {
+      "value": 34,
+      "symbol": {
+        "bits": 0,
+        "size": 1,
+        "decoded": 10
+      },
+      "extraBits": {
+        "bits": 1,
+        "size": 4,
+        "decoded": 1
+      }
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 36,
+      "size": 6,
+      "decoded": 35
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 3,
+      "size": 4,
+      "decoded": 48
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 3,
+      "size": 4,
+      "decoded": 48
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 48,
+      "size": 6,
+      "decoded": 102
+    }
+  },
+  {
+    "type": "lz77",
+    "chars": [
+      34,
+      32,
+      100,
+      61,
+      34,
+      77
+    ],
+    "length": {
+      "value": 6,
+      "symbol": {
+        "bits": 62,
+        "size": 6,
+        "decoded": 260
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 0,
+        "decoded": 0
+      }
+    },
+    "dist": {
+      "value": 35,
+      "symbol": {
+        "bits": 0,
+        "size": 1,
+        "decoded": 10
+      },
+      "extraBits": {
+        "bits": 2,
+        "size": 4,
+        "decoded": 2
+      }
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 10,
+      "size": 5,
+      "decoded": 50
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 0,
+      "size": 4,
+      "decoded": 32
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 10,
+      "size": 5,
+      "decoded": 50
+    }
+  },
+  {
+    "type": "lz77",
+    "chars": [
+      104,
+      51,
+      118,
+      51,
+      72
+    ],
+    "length": {
+      "value": 5,
+      "symbol": {
+        "bits": 61,
+        "size": 6,
+        "decoded": 259
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 0,
+        "decoded": 0
+      }
+    },
+    "dist": {
+      "value": 35,
+      "symbol": {
+        "bits": 0,
+        "size": 1,
+        "decoded": 10
+      },
+      "extraBits": {
+        "bits": 2,
+        "size": 4,
+        "decoded": 2
+      }
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 10,
+      "size": 5,
+      "decoded": 50
+    }
+  },
+  {
+    "type": "lz77",
+    "chars": [
+      122,
+      34,
+      47,
+      62,
+      60
+    ],
+    "length": {
+      "value": 5,
+      "symbol": {
+        "bits": 61,
+        "size": 6,
+        "decoded": 259
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 0,
+        "decoded": 0
+      }
+    },
+    "dist": {
+      "value": 35,
+      "symbol": {
+        "bits": 0,
+        "size": 1,
+        "decoded": 10
+      },
+      "extraBits": {
+        "bits": 2,
+        "size": 4,
+        "decoded": 2
+      }
+    }
+  },
+  {
+    "type": "lz77",
+    "chars": [
+      47,
+      115,
+      118,
+      103
+    ],
+    "length": {
+      "value": 4,
+      "symbol": {
+        "bits": 60,
+        "size": 6,
+        "decoded": 258
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 0,
+        "decoded": 0
+      }
+    },
+    "dist": {
+      "value": 94,
+      "symbol": {
+        "bits": 3,
+        "size": 2,
+        "decoded": 12
+      },
+      "extraBits": {
+        "bits": 29,
+        "size": 5,
+        "decoded": 29
+      }
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 41,
+      "size": 6,
+      "decoded": 62
+    }
+  },
+  {
+    "type": "block_end",
+    "value": {
+      "bits": 59,
+      "size": 6,
+      "decoded": 256
+    }
+  },
+  {
+    "type": "gzip_footer",
+    "bytes": {
+      "type": "Buffer",
+      "data": [
+        82,
+        70,
+        161,
+        37,
+        133,
+        0,
+        0,
+        0
+      ]
+    }
+  }
+]

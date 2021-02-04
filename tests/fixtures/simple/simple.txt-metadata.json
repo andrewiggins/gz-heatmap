@@ -1,0 +1,349 @@
+[
+  {
+    "type": "gzip_header",
+    "bytes": {
+      "type": "Buffer",
+      "data": [
+        31,
+        139,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10
+      ]
+    }
+  },
+  {
+    "type": "bfinal",
+    "value": {
+      "bits": 1,
+      "size": 1,
+      "decoded": 1
+    }
+  },
+  {
+    "type": "btype",
+    "value": {
+      "bits": 1,
+      "size": 2,
+      "decoded": 1
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 152,
+      "size": 8,
+      "decoded": 104
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 145,
+      "size": 8,
+      "decoded": 97
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 157,
+      "size": 8,
+      "decoded": 109
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 80,
+      "size": 8,
+      "decoded": 32
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 152,
+      "size": 8,
+      "decoded": 104
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 145,
+      "size": 8,
+      "decoded": 97
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 157,
+      "size": 8,
+      "decoded": 109
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 146,
+      "size": 8,
+      "decoded": 98
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 165,
+      "size": 8,
+      "decoded": 117
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 162,
+      "size": 8,
+      "decoded": 114
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 151,
+      "size": 8,
+      "decoded": 103
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 149,
+      "size": 8,
+      "decoded": 101
+    }
+  },
+  {
+    "type": "literal",
+    "value": {
+      "bits": 162,
+      "size": 8,
+      "decoded": 114
+    }
+  },
+  {
+    "type": "lz77",
+    "chars": [
+      32,
+      104,
+      97,
+      109
+    ],
+    "length": {
+      "value": 4,
+      "symbol": {
+        "bits": 2,
+        "size": 7,
+        "decoded": 258
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 0,
+        "decoded": 0
+      }
+    },
+    "dist": {
+      "value": 10,
+      "symbol": {
+        "bits": 6,
+        "size": 5,
+        "decoded": 6
+      },
+      "extraBits": {
+        "bits": 1,
+        "size": 2,
+        "decoded": 1
+      }
+    }
+  },
+  {
+    "type": "lz77",
+    "chars": [
+      32,
+      104,
+      97
+    ],
+    "length": {
+      "value": 3,
+      "symbol": {
+        "bits": 1,
+        "size": 7,
+        "decoded": 257
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 0,
+        "decoded": 0
+      }
+    },
+    "dist": {
+      "value": 4,
+      "symbol": {
+        "bits": 3,
+        "size": 5,
+        "decoded": 3
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 0,
+        "decoded": 0
+      }
+    }
+  },
+  {
+    "type": "lz77",
+    "chars": [
+      32,
+      104,
+      97,
+      109,
+      98,
+      117,
+      114,
+      103
+    ],
+    "length": {
+      "value": 8,
+      "symbol": {
+        "bits": 6,
+        "size": 7,
+        "decoded": 262
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 0,
+        "decoded": 0
+      }
+    },
+    "dist": {
+      "value": 17,
+      "symbol": {
+        "bits": 8,
+        "size": 5,
+        "decoded": 8
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 3,
+        "decoded": 0
+      }
+    }
+  },
+  {
+    "type": "lz77",
+    "chars": [
+      32,
+      104,
+      97,
+      109,
+      98
+    ],
+    "length": {
+      "value": 5,
+      "symbol": {
+        "bits": 3,
+        "size": 7,
+        "decoded": 259
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 0,
+        "decoded": 0
+      }
+    },
+    "dist": {
+      "value": 8,
+      "symbol": {
+        "bits": 5,
+        "size": 5,
+        "decoded": 5
+      },
+      "extraBits": {
+        "bits": 1,
+        "size": 1,
+        "decoded": 1
+      }
+    }
+  },
+  {
+    "type": "lz77",
+    "chars": [
+      32,
+      104,
+      97,
+      109,
+      98,
+      117,
+      114,
+      103,
+      101,
+      114
+    ],
+    "length": {
+      "value": 10,
+      "symbol": {
+        "bits": 8,
+        "size": 7,
+        "decoded": 264
+      },
+      "extraBits": {
+        "bits": 0,
+        "size": 0,
+        "decoded": 0
+      }
+    },
+    "dist": {
+      "value": 30,
+      "symbol": {
+        "bits": 9,
+        "size": 5,
+        "decoded": 9
+      },
+      "extraBits": {
+        "bits": 5,
+        "size": 3,
+        "decoded": 5
+      }
+    }
+  },
+  {
+    "type": "block_end",
+    "value": {
+      "bits": 0,
+      "size": 7,
+      "decoded": 256
+    }
+  },
+  {
+    "type": "gzip_footer",
+    "bytes": {
+      "type": "Buffer",
+      "data": [
+        154,
+        49,
+        142,
+        88,
+        43,
+        0,
+        0,
+        0
+      ]
+    }
+  }
+]

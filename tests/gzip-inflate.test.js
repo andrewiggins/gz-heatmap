@@ -1,9 +1,10 @@
 import { gzinflate } from "../src/inflate.js";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
-import { readFileSync, existsSync } from "fs";
+import { existsSync } from "fs";
+import { readFile, writeFile } from "fs/promises";
 import { test } from "uvu";
-import { deepStrictEqual, strictEqual } from "assert";
+import * as assert from "uvu/assert";
 import {
 	formatMetadata,
 	getTotalEncodedBitSize,
@@ -15,8 +16,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 /** @type {(...args: string[]) => string} */
 const fixture = (...args) => join(__dirname, "fixtures", ...args);
 
-/** @type {(path: string) => string} */
-const readFixture = (path) => readFileSync(path, "utf8").replace(/\r\n/g, "\n");
+/** @type {(path: string) => Promise<string>} */
+const readFixture = async (path) =>
+	(await readFile(path, "utf8")).replace(/\r\n/g, "\n");
 
 const testFiles = [
 	"simple/simple.txt",
@@ -30,14 +32,14 @@ const testFiles = [
 ];
 
 testFiles.forEach((testFile) => {
-	test(`should inflate ${testFile}`, () => {
-		let input = readFileSync(fixture(testFile + ".gz"));
-		let expectedOut = readFixture(fixture(testFile));
+	test(`should inflate ${testFile}`, async () => {
+		let input = await readFile(fixture(testFile + ".gz"));
+		let expectedOut = await readFixture(fixture(testFile));
 
 		let metadataPath = join(dirname(fixture(testFile)), "defdb.txt");
 		let expectedMeta = null;
 		if (existsSync(metadataPath)) {
-			expectedMeta = readFixture(metadataPath)
+			expectedMeta = (await readFixture(metadataPath))
 				// Replace tab and line feed entries with their escape chars
 				.replace(/^(\s?\[[0-9]+\] 0A)/gm, "$1  \\n")
 				.replace(/^(\s?\[[0-9]+\] 09)/gm, "$1  \\t")
@@ -48,18 +50,26 @@ testFiles.forEach((testFile) => {
 		let out = Buffer.alloc(expectedOut.length);
 		let { metadata } = gzinflate(input, out);
 
-		deepStrictEqual(out.toString("utf8"), expectedOut);
+		assert.is(out.toString("utf8"), expectedOut);
 
 		if (expectedMeta) {
-			deepStrictEqual(formatMetadata(metadata), expectedMeta);
+			assert.is(formatMetadata(metadata), expectedMeta);
 		}
 
 		// logMetadata(metadata);
+		// await writeFile(
+		// 	fixture(testFile + "-metadata.json"),
+		// 	JSON.stringify(metadata, null, 2),
+		// 	"utf8"
+		// );
+		const metadataFixturePath = fixture(testFile + "-metadata.json");
+		const metadataFixture = await readFixture(metadataFixturePath);
+		assert.fixture(JSON.stringify(metadata, null, 2), metadataFixture);
 
 		let bitSize = getTotalEncodedBitSize(metadata);
 		let expectedLen = input.length * 8;
 		let byteRoundedSize = bitSize + (bitSize % 8 == 0 ? 0 : 8 - (bitSize % 8));
-		strictEqual(
+		assert.is(
 			byteRoundedSize,
 			expectedLen,
 			"compute size does not match actual size"
@@ -74,10 +84,10 @@ testFiles.forEach((testFile) => {
 					: s,
 			""
 		);
-		strictEqual(actualText, expectedOut);
+		assert.is(actualText, expectedOut);
 
 		let reconstructedBits = reconstructBinary(metadata, input);
-		deepStrictEqual(
+		assert.equal(
 			Array.from(reconstructedBits).map((v) => v.toString(2).padStart(8, "0")),
 			Array.from(new Uint8Array(input)).map((v) =>
 				v.toString(2).padStart(8, "0")
