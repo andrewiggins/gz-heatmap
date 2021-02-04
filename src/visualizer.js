@@ -1,6 +1,7 @@
 /** @type {(size: number, maxSize?: number) => string} */
 const sizeToClass = (size, maxSize = 0) => {
-	size = Math.ceil(10 - maxSize + size);
+	// size = Math.ceil(10 - maxSize + size);
+	size = Math.ceil(size);
 	return size < 10 ? `size-${size}` : "size-l";
 };
 
@@ -43,6 +44,10 @@ export function constructHeatmap(metadata) {
 	const container = document.createElement("pre");
 	container.classList.add("gz-heatmap-container");
 
+	// TODO: Need to incorporate huffman code table costs amortized over each
+	// usage of the huffman code length. Who pays for repeat of zeros?
+
+	// TODO: Remove max size adjustment. I don't think this is correct.
 	const maxSize = metadata.reduce(
 		(max, datum) =>
 			datum.type == "literal" && datum.value.size > max
@@ -51,8 +56,6 @@ export function constructHeatmap(metadata) {
 		0
 	);
 
-	console.log(maxSize);
-
 	for (let datum of metadata) {
 		if (datum.type == "literal") {
 			let node = createNode(datum.value.decoded, datum.value.size, maxSize);
@@ -60,6 +63,7 @@ export function constructHeatmap(metadata) {
 		} else if (datum.type == "lz77") {
 			let size = getLZ77TotalBitSize(datum);
 			let node = createNode(datum.chars, size / datum.length.value, maxSize);
+			// let node = createNode(datum.chars, Math.floor(size / datum.length.value), maxSize);
 
 			node.classList.add("lz77");
 			node.setAttribute("data-length", datum.length.value.toString());
@@ -95,16 +99,23 @@ export function setupStyles() {
 			line-height: 2.2rem;
 		}
 
-		.size-1 { background-color: #000560; } /* midnight blue */
-		.size-2 { background-color: #023d9a; } /* dark blue */
-		.size-3 { background-color: #005fd3; } /* royal blue */
-		.size-4 { background-color: #0186c0; } /* teal */
-		.size-5 { background-color: #4ab03d; } /* emerald green */
-		.size-6 { background-color: #b5d000; } /* chartreuse (lime green) */
-		.size-7 { background-color: #ebd109; } /* yellow */
-		.size-8 { background-color: #fba70f; } /* orange */
-		.size-9 { background-color: #d00000; } /* bright red */
-		.size-l { background-color: #950000; } /* dark red */
+		.size-1  { background-color: #000560; } /* midnight blue */
+		.size-2  { background-color: #023d9a; } /* dark blue */
+		.size-3  { background-color: #005fd3; } /* royal blue */
+		.size-4  { background-color: #0186c0; } /* teal */
+		.size-5  { background-color: #4ab03d; } /* emerald green */
+		.size-6  { background-color: #b5d000; } /* chartreuse (lime green) */
+		.size-7  { background-color: #ebd109; } /* yellow */
+		.size-8  { background-color: #fba70f; } /* orange */
+		.size-9  { background-color: #ee0000; } /* bright red */
+		.size-10 { background-color: #d00000; } /* dark red 1 */
+		.size-11 { background-color: #b20000; } /* dark red 2 */
+		.size-12 { background-color: #950000; } /* dark red 3 */
+		.size-13 { background-color: #770000; } /* dark red 4 */
+		.size-14 { background-color: #5a0000; } /* dark red 5 */
+		.size-15 { background-color: #3c0000; } /* dark red 6 */
+		.size-16 { background-color: #1e0000; } /* dark red 7 */
+		.size-17 { background-color: #000000; } /* dark red 8 */
 	`;
 
 	document.head.appendChild(style);
