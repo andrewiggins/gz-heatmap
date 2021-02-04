@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>GZ Heatmap</title>
+		<style>
+			body {
+				background-color: #252526;
+			}
+
+			.gz-heatmap-container {
+				font-size: 2rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main"></div>
+		<script type="module">
+			import { setupStyles, constructHeatmap } from "./visualizer.js";
+
+			setupStyles();
+			fetch("/tests/fixtures/svg-7-hex/image.svg-metadata.json")
+				.then((res) => res.json())
+				.then((metadata) => constructHeatmap(metadata))
+				.then((html) => document.getElementById("main").appendChild(html));
+		</script>
+	</body>
+</html>

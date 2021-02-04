@@ -1,3 +1,5 @@
+import { getLZ77TotalBitSize } from "../../src/visualizer.js";
+
 /**
  * @param {Metadata} metadata
  */
@@ -251,22 +253,6 @@ function invertBits(value, length) {
 	}
 
 	return invertedValue;
-}
-
-/**
- * @param {LZ77BitInfo} info
- * @returns {number}
- */
-function getLZ77TotalBitSize(info) {
-	let length = info.length;
-	let dist = info.dist;
-
-	return (
-		length.symbol.size +
-		length.extraBits.size +
-		dist.symbol.size +
-		dist.extraBits.size
-	);
 }
 
 /**

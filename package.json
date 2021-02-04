@@ -8,7 +8,8 @@
     "gz-heatmap": "bin/gz-heatmap.js"
   },
   "scripts": {
-    "test": "uvu tests"
+    "test": "uvu tests",
+    "dev": "wmr --public ."
   },
   "repository": {
     "type": "git",
@@ -31,10 +32,11 @@
     "src",
     "bin"
   ],
-  "devDependencies": {
-    "uvu": "^0.5.1"
-  },
   "dependencies": {
     "sade": "^1.7.4"
+  },
+  "devDependencies": {
+    "uvu": "^0.5.1",
+    "wmr": "^1.1.0"
   }
 }
