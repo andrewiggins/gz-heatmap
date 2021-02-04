@@ -1,0 +1,418 @@
+ [1] Last block (val: 1)
+ [2] Dynamic Huffman Tree block (val: 2)
+ [5] HLIT  267 (val:10)
+ [5] HDIST  13 (val:12)
+ [4] HCLEN  18 (val:14)
+ [3] 16 CLL (val: 4)
+ [3] 17 CLL (val: 3)
+ [3] 18 CLL (val: 4)
+ [3]  0 CLL (val: 2)
+ [3]  8 CLL (val: 0)
+ [3]  7 CLL (val: 0)
+ [3]  9 CLL (val: 0)
+ [3]  6 CLL (val: 2)
+ [3] 10 CLL (val: 0)
+ [3]  5 CLL (val: 3)
+ [3] 11 CLL (val: 0)
+ [3]  4 CLL (val: 4)
+ [3] 12 CLL (val: 0)
+ [3]  3 CLL (val: 0)
+ [3] 13 CLL (val: 0)
+ [3]  2 CLL (val: 5)
+ [3] 14 CLL (val: 0)
+ [3]  1 CLL (val: 5)
+ [_] 15 CLL (val: 0)
+[11] ZREP (32 times)
+ [_] 0x00 CL (val: 0)
+ [_] 0x01 CL (val: 0)
+ [_] 0x02 CL (val: 0)
+ [_] 0x03 CL (val: 0)
+ [_] 0x04 CL (val: 0)
+ [_] 0x05 CL (val: 0)
+ [_] 0x06 CL (val: 0)
+ [_] 0x07 CL (val: 0)
+ [_] 0x08 CL (val: 0)
+ [_] 0x09 CL (val: 0)
+ [_] 0x0A CL (val: 0)
+ [_] 0x0B CL (val: 0)
+ [_] 0x0C CL (val: 0)
+ [_] 0x0D CL (val: 0)
+ [_] 0x0E CL (val: 0)
+ [_] 0x0F CL (val: 0)
+ [_] 0x10 CL (val: 0)
+ [_] 0x11 CL (val: 0)
+ [_] 0x12 CL (val: 0)
+ [_] 0x13 CL (val: 0)
+ [_] 0x14 CL (val: 0)
+ [_] 0x15 CL (val: 0)
+ [_] 0x16 CL (val: 0)
+ [_] 0x17 CL (val: 0)
+ [_] 0x18 CL (val: 0)
+ [_] 0x19 CL (val: 0)
+ [_] 0x1A CL (val: 0)
+ [_] 0x1B CL (val: 0)
+ [_] 0x1C CL (val: 0)
+ [_] 0x1D CL (val: 0)
+ [_] 0x1E CL (val: 0)
+ [_] 0x1F CL (val: 0)
+ [4] 0x20 CL (val: 4)
+ [2] 0x21 CL (val: 0)
+ [4] 0x22 CL (val: 4)
+ [2] 0x23 CL (val: 6)
+ [6] ZREP (10 times)
+ [_] 0x24 CL (val: 0)
+ [_] 0x25 CL (val: 0)
+ [_] 0x26 CL (val: 0)
+ [_] 0x27 CL (val: 0)
+ [_] 0x28 CL (val: 0)
+ [_] 0x29 CL (val: 0)
+ [_] 0x2A CL (val: 0)
+ [_] 0x2B CL (val: 0)
+ [_] 0x2C CL (val: 0)
+ [_] 0x2D CL (val: 0)
+ [2] 0x2E CL (val: 6)
+ [4] 0x2F CL (val: 4)
+ [4] 0x30 CL (val: 4)
+ [2] 0x31 CL (val: 0)
+ [3] 0x32 CL (val: 5)
+ [3] 0x33 CL (val: 5)
+ [2] 0x34 CL (val: 0)
+ [2] 0x35 CL (val: 6)
+ [6] ZREP (4 times)
+ [_] 0x36 CL (val: 0)
+ [_] 0x37 CL (val: 0)
+ [_] 0x38 CL (val: 0)
+ [_] 0x39 CL (val: 0)
+ [2] 0x3A CL (val: 6)
+ [2] 0x3B CL (val: 0)
+ [2] 0x3C CL (val: 6)
+ [3] 0x3D CL (val: 5)
+ [2] 0x3E CL (val: 6)
+ [6] ZREP (3 times)
+ [_] 0x3F CL (val: 0)
+ [_] 0x40 CL (val: 0)
+ [_] 0x41 CL (val: 0)
+ [2] 0x42 CL (val: 6)
+ [6] ZREP (5 times)
+ [_] 0x43 CL (val: 0)
+ [_] 0x44 CL (val: 0)
+ [_] 0x45 CL (val: 0)
+ [_] 0x46 CL (val: 0)
+ [_] 0x47 CL (val: 0)
+ [2] 0x48 CL (val: 6)
+ [6] ZREP (4 times)
+ [_] 0x49 CL (val: 0)
+ [_] 0x4A CL (val: 0)
+ [_] 0x4B CL (val: 0)
+ [_] 0x4C CL (val: 0)
+ [2] 0x4D CL (val: 6)
+[11] ZREP (19 times)
+ [_] 0x4E CL (val: 0)
+ [_] 0x4F CL (val: 0)
+ [_] 0x50 CL (val: 0)
+ [_] 0x51 CL (val: 0)
+ [_] 0x52 CL (val: 0)
+ [_] 0x53 CL (val: 0)
+ [_] 0x54 CL (val: 0)
+ [_] 0x55 CL (val: 0)
+ [_] 0x56 CL (val: 0)
+ [_] 0x57 CL (val: 0)
+ [_] 0x58 CL (val: 0)
+ [_] 0x59 CL (val: 0)
+ [_] 0x5A CL (val: 0)
+ [_] 0x5B CL (val: 0)
+ [_] 0x5C CL (val: 0)
+ [_] 0x5D CL (val: 0)
+ [_] 0x5E CL (val: 0)
+ [_] 0x5F CL (val: 0)
+ [_] 0x60 CL (val: 0)
+ [2] 0x61 CL (val: 6)
+ [2] 0x62 CL (val: 0)
+ [2] 0x63 CL (val: 0)
+ [2] 0x64 CL (val: 6)
+ [6] LREP (3 times)
+ [_] 0x65 CL (val: 6)
+ [_] 0x66 CL (val: 6)
+ [_] 0x67 CL (val: 6)
+ [3] 0x68 CL (val: 5)
+ [2] 0x69 CL (val: 6)
+ [2] 0x6A CL (val: 0)
+ [2] 0x6B CL (val: 0)
+ [3] 0x6C CL (val: 5)
+ [2] 0x6D CL (val: 6)
+ [6] LREP (3 times)
+ [_] 0x6E CL (val: 6)
+ [_] 0x6F CL (val: 6)
+ [_] 0x70 CL (val: 6)
+ [2] 0x71 CL (val: 0)
+ [2] 0x72 CL (val: 6)
+ [3] 0x73 CL (val: 5)
+ [3] 0x74 CL (val: 5)
+ [2] 0x75 CL (val: 0)
+ [3] 0x76 CL (val: 5)
+ [4] 0x77 CL (val: 4)
+ [3] 0x78 CL (val: 5)
+[11] ZREP (135 times)
+ [_] 0x79 CL (val: 0)
+ [_] 0x7A CL (val: 0)
+ [_] 0x7B CL (val: 0)
+ [_] 0x7C CL (val: 0)
+ [_] 0x7D CL (val: 0)
+ [_] 0x7E CL (val: 0)
+ [_] 0x7F CL (val: 0)
+ [_] 0x80 CL (val: 0)
+ [_] 0x81 CL (val: 0)
+ [_] 0x82 CL (val: 0)
+ [_] 0x83 CL (val: 0)
+ [_] 0x84 CL (val: 0)
+ [_] 0x85 CL (val: 0)
+ [_] 0x86 CL (val: 0)
+ [_] 0x87 CL (val: 0)
+ [_] 0x88 CL (val: 0)
+ [_] 0x89 CL (val: 0)
+ [_] 0x8A CL (val: 0)
+ [_] 0x8B CL (val: 0)
+ [_] 0x8C CL (val: 0)
+ [_] 0x8D CL (val: 0)
+ [_] 0x8E CL (val: 0)
+ [_] 0x8F CL (val: 0)
+ [_] 0x90 CL (val: 0)
+ [_] 0x91 CL (val: 0)
+ [_] 0x92 CL (val: 0)
+ [_] 0x93 CL (val: 0)
+ [_] 0x94 CL (val: 0)
+ [_] 0x95 CL (val: 0)
+ [_] 0x96 CL (val: 0)
+ [_] 0x97 CL (val: 0)
+ [_] 0x98 CL (val: 0)
+ [_] 0x99 CL (val: 0)
+ [_] 0x9A CL (val: 0)
+ [_] 0x9B CL (val: 0)
+ [_] 0x9C CL (val: 0)
+ [_] 0x9D CL (val: 0)
+ [_] 0x9E CL (val: 0)
+ [_] 0x9F CL (val: 0)
+ [_] 0xA0 CL (val: 0)
+ [_] 0xA1 CL (val: 0)
+ [_] 0xA2 CL (val: 0)
+ [_] 0xA3 CL (val: 0)
+ [_] 0xA4 CL (val: 0)
+ [_] 0xA5 CL (val: 0)
+ [_] 0xA6 CL (val: 0)
+ [_] 0xA7 CL (val: 0)
+ [_] 0xA8 CL (val: 0)
+ [_] 0xA9 CL (val: 0)
+ [_] 0xAA CL (val: 0)
+ [_] 0xAB CL (val: 0)
+ [_] 0xAC CL (val: 0)
+ [_] 0xAD CL (val: 0)
+ [_] 0xAE CL (val: 0)
+ [_] 0xAF CL (val: 0)
+ [_] 0xB0 CL (val: 0)
+ [_] 0xB1 CL (val: 0)
+ [_] 0xB2 CL (val: 0)
+ [_] 0xB3 CL (val: 0)
+ [_] 0xB4 CL (val: 0)
+ [_] 0xB5 CL (val: 0)
+ [_] 0xB6 CL (val: 0)
+ [_] 0xB7 CL (val: 0)
+ [_] 0xB8 CL (val: 0)
+ [_] 0xB9 CL (val: 0)
+ [_] 0xBA CL (val: 0)
+ [_] 0xBB CL (val: 0)
+ [_] 0xBC CL (val: 0)
+ [_] 0xBD CL (val: 0)
+ [_] 0xBE CL (val: 0)
+ [_] 0xBF CL (val: 0)
+ [_] 0xC0 CL (val: 0)
+ [_] 0xC1 CL (val: 0)
+ [_] 0xC2 CL (val: 0)
+ [_] 0xC3 CL (val: 0)
+ [_] 0xC4 CL (val: 0)
+ [_] 0xC5 CL (val: 0)
+ [_] 0xC6 CL (val: 0)
+ [_] 0xC7 CL (val: 0)
+ [_] 0xC8 CL (val: 0)
+ [_] 0xC9 CL (val: 0)
+ [_] 0xCA CL (val: 0)
+ [_] 0xCB CL (val: 0)
+ [_] 0xCC CL (val: 0)
+ [_] 0xCD CL (val: 0)
+ [_] 0xCE CL (val: 0)
+ [_] 0xCF CL (val: 0)
+ [_] 0xD0 CL (val: 0)
+ [_] 0xD1 CL (val: 0)
+ [_] 0xD2 CL (val: 0)
+ [_] 0xD3 CL (val: 0)
+ [_] 0xD4 CL (val: 0)
+ [_] 0xD5 CL (val: 0)
+ [_] 0xD6 CL (val: 0)
+ [_] 0xD7 CL (val: 0)
+ [_] 0xD8 CL (val: 0)
+ [_] 0xD9 CL (val: 0)
+ [_] 0xDA CL (val: 0)
+ [_] 0xDB CL (val: 0)
+ [_] 0xDC CL (val: 0)
+ [_] 0xDD CL (val: 0)
+ [_] 0xDE CL (val: 0)
+ [_] 0xDF CL (val: 0)
+ [_] 0xE0 CL (val: 0)
+ [_] 0xE1 CL (val: 0)
+ [_] 0xE2 CL (val: 0)
+ [_] 0xE3 CL (val: 0)
+ [_] 0xE4 CL (val: 0)
+ [_] 0xE5 CL (val: 0)
+ [_] 0xE6 CL (val: 0)
+ [_] 0xE7 CL (val: 0)
+ [_] 0xE8 CL (val: 0)
+ [_] 0xE9 CL (val: 0)
+ [_] 0xEA CL (val: 0)
+ [_] 0xEB CL (val: 0)
+ [_] 0xEC CL (val: 0)
+ [_] 0xED CL (val: 0)
+ [_] 0xEE CL (val: 0)
+ [_] 0xEF CL (val: 0)
+ [_] 0xF0 CL (val: 0)
+ [_] 0xF1 CL (val: 0)
+ [_] 0xF2 CL (val: 0)
+ [_] 0xF3 CL (val: 0)
+ [_] 0xF4 CL (val: 0)
+ [_] 0xF5 CL (val: 0)
+ [_] 0xF6 CL (val: 0)
+ [_] 0xF7 CL (val: 0)
+ [_] 0xF8 CL (val: 0)
+ [_] 0xF9 CL (val: 0)
+ [_] 0xFA CL (val: 0)
+ [_] 0xFB CL (val: 0)
+ [_] 0xFC CL (val: 0)
+ [_] 0xFD CL (val: 0)
+ [_] 0xFE CL (val: 0)
+ [_] 0xFF CL (val: 0)
+ [2] EofB CL (val: 6)
+ [6] LREP (4 times)
+ [_] l_00 CL (val: 6) (length 3)
+ [_] l_01 CL (val: 6) (length 4)
+ [_] l_02 CL (val: 6) (length 5)
+ [_] l_03 CL (val: 6) (length 6)
+ [6] ZREP (5 times)
+ [_] l_04 CL (val: 0) (length 7)
+ [_] l_05 CL (val: 0) (length 8)
+ [_] l_06 CL (val: 0) (length 9)
+ [_] l_07 CL (val: 0) (length 10)
+ [_] l_08 CL (val: 0) (lengths [11-12])
+ [2] l_09 CL (val: 6) (lengths [13-14])
+ [6] ZREP (9 times)
+ [_] d_00 CL (val: 0) (distance 1)
+ [_] d_01 CL (val: 0) (distance 2)
+ [_] d_02 CL (val: 0) (distance 3)
+ [_] d_03 CL (val: 0) (distance 4)
+ [_] d_04 CL (val: 0) (distances [5-6])
+ [_] d_05 CL (val: 0) (distances [7-8])
+ [_] d_06 CL (val: 0) (distances [9-12])
+ [_] d_07 CL (val: 0) (distances [13-16])
+ [_] d_08 CL (val: 0) (distances [17-24])
+ [5] d_09 CL (val: 2) (distances [25-32])
+ [5] d_10 CL (val: 1) (distances [33-48])
+ [2] d_11 CL (val: 0) (distances [49-64])
+ [5] d_12 CL (val: 2) (distances [65-96])
+ [6] 3C  <
+ [5] 73  s
+ [5] 76  v
+ [6] 67  g
+ [4] 20   
+ [5] 78  x
+ [6] 6D  m
+ [5] 6C  l
+ [6] 6E  n
+ [5] 73  s
+ [5] 3D  =
+ [4] 22  "
+ [5] 68  h
+ [5] 74  t
+ [5] 74  t
+ [6] 70  p
+ [6] 3A  :
+ [4] 2F  /
+ [4] 2F  /
+ [4] 77  w
+ [4] 77  w
+ [4] 77  w
+ [6] 2E  .
+ [4] 77  w
+ [5] 33  3
+ [6] 2E  .
+ [6] 6F  o
+ [6] 72  r
+ [6] 67  g
+ [4] 2F  /
+ [5] 32  2
+ [4] 30  0
+ [4] 30  0
+ [4] 30  0
+ [4] 2F  /
+[11] (3,34)
+ [4] 22  "
+ [4] 20   
+ [5] 76  v
+ [6] 69  i
+ [6] 65  e
+ [4] 77  w
+ [6] 42  B
+ [6] 6F  o
+ [5] 78  x
+ [5] 3D  =
+ [4] 22  "
+ [4] 30  0
+ [4] 20   
+ [4] 30  0
+ [4] 20   
+ [6] 35  5
+ [4] 20   
+ [6] 35  5
+ [4] 22  "
+ [6] 3E  >
+ [6] 3C  <
+ [6] 70  p
+ [6] 61  a
+ [5] 74  t
+ [5] 68  h
+ [4] 20   
+ [6] 66  f
+ [6] 69  i
+ [5] 6C  l
+ [5] 6C  l
+ [5] 3D  =
+ [4] 22  "
+ [6] 72  r
+ [6] 65  e
+ [6] 64  d
+ [4] 22  "
+ [4] 20   
+ [6] 64  d
+ [5] 3D  =
+ [4] 22  "
+ [6] 4D  M
+[11] (3,30)
+ [5] 68  h
+ [5] 33  3
+ [5] 76  v
+ [5] 33  3
+ [6] 48  H
+ [4] 30  0
+ [4] 22  "
+ [4] 2F  /
+[12] (13,33)
+ [6] 23  #
+ [4] 30  0
+ [4] 30  0
+ [6] 66  f
+[11] (6,34)
+ [5] 32  2
+ [4] 20   
+ [5] 32  2
+[11] (5,34)
+ [5] 32  2
+[11] (4,34)
+[13] (4,92)
+ [6] 3E  >
+ [6] EofB
