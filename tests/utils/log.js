@@ -1,4 +1,4 @@
-import { getLZ77TotalBitSize } from "../../src/visualizer.js";
+import { getLZ77TotalBitSize } from "../../src/utils.js";
 
 /**
  * @param {Metadata} metadata

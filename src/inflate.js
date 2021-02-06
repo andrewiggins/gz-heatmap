@@ -1,3 +1,6 @@
+// Algorithm here is adapted from a fork of [tiny-inflate](https://github.com/foliojs/tiny-inflate)
+// with some functions from [fflate](https://github.com/101arrowz/fflate)
+
 const TINF_OK = 0;
 const TINF_DATA_ERROR = -3;
 

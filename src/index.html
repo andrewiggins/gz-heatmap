@@ -20,6 +20,7 @@
 			import { setupStyles, constructHeatmap } from "./visualizer.js";
 
 			setupStyles();
+			// fetch("/tests/fixtures/svg-6-backrefs/image.svg-metadata.json")
 			fetch("/tests/fixtures/svg-7-hex/image.svg-metadata.json")
 				.then((res) => res.json())
 				.then((metadata) => constructHeatmap(metadata))
