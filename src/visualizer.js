@@ -2,8 +2,8 @@ import { getCodeLengthSize, getLZ77TotalBitSize } from "./utils";
 
 /** @type {(size: number, maxSize?: number) => string} */
 const sizeToClass = (size, maxSize = 0) => {
-	// size = Math.ceil(10 - maxSize + size);
-	size = Math.ceil(size);
+	size = Math.ceil(10 - maxSize + size);
+	// size = Math.ceil(size);
 	return size < 17 ? `size-${size}` : "size-17";
 };
 
@@ -41,7 +41,8 @@ export function constructHeatmap(metadata) {
 	let counts = countCodeUsages(metadata);
 
 	for (let datum of metadata) {
-		let huffmanSize = getHuffmanCodeSize(datum, counts);
+		// let huffmanSize = getHuffmanCodeSize(datum, counts);
+		let huffmanSize = 0;
 
 		if (datum.type == "literal") {
 			let size = datum.value.size + huffmanSize;
