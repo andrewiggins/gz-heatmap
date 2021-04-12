@@ -1,6 +1,5 @@
 import { gzinflate } from "../src/inflate.js";
 import { dirname, join } from "path";
-import { fileURLToPath } from "url";
 import { existsSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
 import { test } from "uvu";
@@ -11,14 +10,7 @@ import {
 	logMetadata,
 	reconstructBinary,
 } from "./utils/log.js";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-/** @type {(...args: string[]) => string} */
-const fixture = (...args) => join(__dirname, "fixtures", ...args);
-
-/** @type {(path: string) => Promise<string>} */
-const readFixture = async (path) =>
-	(await readFile(path, "utf8")).replace(/\r\n/g, "\n");
+import { fixture, readFixture } from "./utils/paths.js";
 
 const testFiles = [
 	"simple/simple.txt",

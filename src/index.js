@@ -1,3 +1,1 @@
-export function getTheAnswer() {
-	return 42;
-}
+export { gzinflate } from "./inflate.js";

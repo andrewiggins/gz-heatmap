@@ -17,14 +17,14 @@
 	<body>
 		<div id="main"></div>
 		<script type="module">
-			import { setupStyles, constructHeatmap } from "./visualizer.js";
+			import { renderIntoDom } from "/webapp/index.js";
 
-			setupStyles();
-			// fetch("/tests/fixtures/svg-6-backrefs/image.svg-metadata.json")
-			fetch("/tests/fixtures/svg-7-hex/image.svg-metadata.json")
+			fetch("/tests/fixtures/svg-6-backrefs/image.svg-metadata.json")
+				// fetch("/tests/fixtures/svg-7-hex/image.svg-metadata.json")
 				.then((res) => res.json())
-				.then((metadata) => constructHeatmap(metadata))
-				.then((html) => document.getElementById("main").appendChild(html));
+				.then((metadata) =>
+					renderIntoDom(metadata, document.getElementById("main"))
+				);
 		</script>
 	</body>
 </html>

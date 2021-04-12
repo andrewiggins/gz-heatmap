@@ -1,14 +1,12 @@
-import { inflate, gzinflate } from "../src/inflate.js";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import { inflate } from "../src/inflate.js";
 import { createDeflateRaw, deflateRaw, constants } from "zlib";
 import { readFileSync } from "fs";
 import { deepStrictEqual, strictEqual } from "assert";
 import { promisify } from "util";
 import { test } from "uvu";
+import { fixture } from "./utils/paths.js";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const uncompressed = readFileSync(__dirname + "/fixtures/lorem/lorem.txt");
+const uncompressed = readFileSync(fixture("lorem/lorem.txt"));
 
 /** @type {Buffer} */
 let compressed;

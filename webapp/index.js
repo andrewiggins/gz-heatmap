@@ -1,9 +1,9 @@
-import { getCodeLengthSize, getLZ77TotalBitSize } from "./utils";
+import { getCodeLengthSize, getLZ77TotalBitSize } from "../src/utils.js";
 
 /** @type {(size: number, maxSize?: number) => string} */
 const sizeToClass = (size, maxSize = 0) => {
-	size = Math.ceil(10 - maxSize + size);
-	// size = Math.ceil(size);
+	// size = Math.ceil(10 - maxSize + size);
+	size = Math.ceil(size);
 	return size < 17 ? `size-${size}` : "size-17";
 };
 
@@ -24,9 +24,19 @@ function createNode(text, size, maxSize = 0) {
 
 /**
  * @param {Metadata} metadata
+ * @param {HTMLElement} container
+ */
+export function renderIntoDom(metadata, container) {
+	setupStyles();
+	const markup = constructHeatmap(metadata);
+	container.appendChild(markup);
+}
+
+/**
+ * @param {Metadata} metadata
  * @returns {HTMLElement}
  */
-export function constructHeatmap(metadata) {
+function constructHeatmap(metadata) {
 	const container = document.createElement("pre");
 	container.classList.add("gz-heatmap-container");
 
@@ -38,7 +48,7 @@ export function constructHeatmap(metadata) {
 		0
 	);
 
-	let counts = countCodeUsages(metadata);
+	// let counts = countCodeUsages(metadata);
 
 	for (let datum of metadata) {
 		// let huffmanSize = getHuffmanCodeSize(datum, counts);
@@ -53,8 +63,8 @@ export function constructHeatmap(metadata) {
 		} else if (datum.type == "lz77") {
 			let totalSize = getLZ77TotalBitSize(datum);
 
-			// let size = totalSize / datum.length.value;
-			let size = Math.floor(totalSize / datum.length.value);
+			let size = totalSize / datum.length.value;
+			// let size = Math.floor(totalSize / datum.length.value);
 
 			let node = createNode(datum.chars, size, maxSize);
 			node.classList.add("lz77");
@@ -69,7 +79,7 @@ export function constructHeatmap(metadata) {
 }
 
 const styleId = "gz-heatmap-styles";
-export function setupStyles() {
+function setupStyles() {
 	if (document.getElementById(styleId) != null) {
 		return;
 	}

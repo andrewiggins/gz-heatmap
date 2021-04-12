@@ -8,6 +8,7 @@
     "gz-heatmap": "bin/gz-heatmap.js"
   },
   "scripts": {
+    "build": "rollup -c ./webapp/rollup.config.js",
     "test": "uvu tests",
     "dev": "wmr --public ."
   },
@@ -33,9 +34,13 @@
     "bin"
   ],
   "dependencies": {
+    "open": "^8.0.5",
     "sade": "^1.7.4"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^11.2.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.45.1",
     "uvu": "^0.5.1",
     "wmr": "^1.5.1"
   }
