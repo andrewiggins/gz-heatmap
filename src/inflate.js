@@ -1,4 +1,4 @@
-// Algorithm here is adapted from a fork of [tiny-inflate](https://github.com/foliojs/tiny-inflate)
+// Algorithm here is adapted from as a fork of [tiny-inflate](https://github.com/foliojs/tiny-inflate)
 // with some functions from [fflate](https://github.com/101arrowz/fflate)
 
 const TINF_OK = 0;
