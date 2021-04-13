@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GZ Heatmap</title>
+    <style>
+      body {
+        background-color: #252526;
+      }
+
+      .gz-heatmap-container {
+        font-size: 2rem;
+      }
+    </style>
+    <style id="gz-heatmap-styles">
+      .gz-heatmap-container {
+        color: #fff;
+        white-space: pre-wrap;
+        word-break: break-all;
+
+        /* offset-x | offset-y | blur-radius | color */
+        text-shadow: 1px 1px 2px black;
+      }
+
+      .gz-heatmap-container span {
+        padding: 2px 0;
+        line-height: 2.2rem;
+      }
+
+      .size-1 {
+        background-color: #000560;
+      } /* midnight blue */
+      .size-2 {
+        background-color: #023d9a;
+      } /* dark blue */
+      .size-3 {
+        background-color: #005fd3;
+      } /* royal blue */
+      .size-4 {
+        background-color: #0186c0;
+      } /* teal */
+      .size-5 {
+        background-color: #4ab03d;
+      } /* emerald green */
+      .size-6 {
+        background-color: #b5d000;
+      } /* chartreuse (lime green) */
+      .size-7 {
+        background-color: #ebd109;
+      } /* yellow */
+      .size-8 {
+        background-color: #fba70f;
+      } /* orange */
+      .size-9 {
+        background-color: #ee0000;
+      } /* bright red */
+      .size-10 {
+        background-color: #d00000;
+      } /* dark red 1 */
+      .size-11 {
+        background-color: #b20000;
+      } /* dark red 2 */
+      .size-12 {
+        background-color: #950000;
+      } /* dark red 3 */
+      .size-13 {
+        background-color: #770000;
+      } /* dark red 4 */
+      .size-14 {
+        background-color: #5a0000;
+      } /* dark red 5 */
+      .size-15 {
+        background-color: #3c0000;
+      } /* dark red 6 */
+      .size-16 {
+        background-color: #1e0000;
+      } /* dark red 7 */
+      .size-17 {
+        background-color: #000000;
+      } /* dark red 8 */
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <pre class="gz-heatmap-container">
+<span class="size-6">&lt;</span>
+<span class="size-6">s</span>
+<span class="size-5">v</span>
+<span class="size-6">g</span>
+<span class="size-4"> </span>
+<span class="size-6">x</span>
+<span class="size-6">m</span>
+<span class="size-5">l</span>
+<span class="size-6">n</span>
+<span class="size-6">s</span>
+<span class="size-5">=</span>
+<span class="size-4">"</span>
+<span class="size-5">h</span>
+<span class="size-5">t</span>
+<span class="size-5">t</span>
+<span class="size-6">p</span>
+<span class="size-6">:</span>
+<span class="size-4">/</span>
+<span class="size-4">/</span>
+<span class="size-4">w</span>
+<span class="size-4">w</span>
+<span class="size-4">w</span>
+<span class="size-6">.</span>
+<span class="size-4">w</span>
+<span class="size-5">3</span>
+<span class="size-6">.</span>
+<span class="size-6">o</span>
+<span class="size-6">r</span>
+<span class="size-6">g</span>
+<span class="size-4">/</span>
+<span class="size-5">2</span>
+<span class="size-3">0</span>
+<span class="size-3">0</span>
+<span class="size-3">0</span>
+<span class="size-4">/</span>
+<span class="size-4 lz77" data-length="3" data-dist="34">svg</span>
+<span class="size-4">"</span>
+<span class="size-4"> </span>
+<span class="size-5">v</span>
+<span class="size-6">i</span>
+<span class="size-6">e</span>
+<span class="size-4">w</span>
+<span class="size-7">B</span>
+<span class="size-6">o</span>
+<span class="size-6">x</span>
+<span class="size-5">=</span>
+<span class="size-4">"</span>
+<span class="size-3">0</span>
+<span class="size-4"> </span>
+<span class="size-3">0</span>
+<span class="size-4"> </span>
+<span class="size-6">5</span>
+<span class="size-4"> </span>
+<span class="size-6">5</span>
+<span class="size-4">"</span>
+<span class="size-6">&gt;</span>
+<span class="size-6">&lt;</span>
+<span class="size-6">p</span>
+<span class="size-7">a</span>
+<span class="size-5">t</span>
+<span class="size-5">h</span>
+<span class="size-4"> </span>
+<span class="size-5">f</span>
+<span class="size-6">i</span>
+<span class="size-5">l</span>
+<span class="size-5">l</span>
+<span class="size-5">=</span>
+<span class="size-4">"</span>
+<span class="size-7">#</span>
+<span class="size-5">f</span>
+<span class="size-3">0</span>
+<span class="size-3">0</span>
+<span class="size-4">"</span>
+<span class="size-4"> </span>
+<span class="size-6">d</span>
+<span class="size-5">=</span>
+<span class="size-4">"</span>
+<span class="size-6">m</span>
+<span class="size-4 lz77" data-length="3" data-dist="31">0 0</span>
+<span class="size-5">h</span>
+<span class="size-5">3</span>
+<span class="size-5">v</span>
+<span class="size-5">3</span>
+<span class="size-5">h</span>
+<span class="size-6">-</span>
+<span class="size-5">3</span>
+<span class="size-4">"</span>
+<span class="size-4">/</span>
+<span class="size-1 lz77" data-length="14" data-dist="35">&gt;&lt;path fill="#</span>
+<span class="size-3">0</span>
+<span class="size-3">0</span>
+<span class="size-5">f</span>
+<span class="size-2 lz77" data-length="6" data-dist="35">" d="m</span>
+<span class="size-5">2</span>
+<span class="size-4"> </span>
+<span class="size-5">2</span>
+<span class="size-2 lz77" data-length="11" data-dist="35">h3v3h-3"/&gt;&lt;</span>
+<span class="size-4 lz77" data-length="4" data-dist="95">/svg</span>
+<span class="size-6">&gt;</span>
+</pre>
+    </div>
+    <script src="gz-heatmap-data.js" type="text/javascript"></script>
+    <script src="gz-heatmap-webapp.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      GZHeatmap.renderIntoDom(
+        window.GZHeatmapData,
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>

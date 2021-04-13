@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GZ Heatmap</title>
+    <style>
+      body {
+        background-color: #252526;
+      }
+
+      .gz-heatmap-container {
+        font-size: 2rem;
+      }
+    </style>
+    <style id="gz-heatmap-styles">
+      .gz-heatmap-container {
+        color: #fff;
+        white-space: pre-wrap;
+        word-break: break-all;
+
+        /* offset-x | offset-y | blur-radius | color */
+        text-shadow: 1px 1px 2px black;
+      }
+
+      .gz-heatmap-container span {
+        padding: 2px 0;
+        line-height: 2.2rem;
+      }
+
+      .size-1 {
+        background-color: #000560;
+      } /* midnight blue */
+      .size-2 {
+        background-color: #023d9a;
+      } /* dark blue */
+      .size-3 {
+        background-color: #005fd3;
+      } /* royal blue */
+      .size-4 {
+        background-color: #0186c0;
+      } /* teal */
+      .size-5 {
+        background-color: #4ab03d;
+      } /* emerald green */
+      .size-6 {
+        background-color: #b5d000;
+      } /* chartreuse (lime green) */
+      .size-7 {
+        background-color: #ebd109;
+      } /* yellow */
+      .size-8 {
+        background-color: #fba70f;
+      } /* orange */
+      .size-9 {
+        background-color: #ee0000;
+      } /* bright red */
+      .size-10 {
+        background-color: #d00000;
+      } /* dark red 1 */
+      .size-11 {
+        background-color: #b20000;
+      } /* dark red 2 */
+      .size-12 {
+        background-color: #950000;
+      } /* dark red 3 */
+      .size-13 {
+        background-color: #770000;
+      } /* dark red 4 */
+      .size-14 {
+        background-color: #5a0000;
+      } /* dark red 5 */
+      .size-15 {
+        background-color: #3c0000;
+      } /* dark red 6 */
+      .size-16 {
+        background-color: #1e0000;
+      } /* dark red 7 */
+      .size-17 {
+        background-color: #000000;
+      } /* dark red 8 */
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <pre class="gz-heatmap-container">
+<span class="size-8">h</span>
+<span class="size-8">a</span>
+<span class="size-8">m</span>
+<span class="size-8"> </span>
+<span class="size-8">h</span>
+<span class="size-8">a</span>
+<span class="size-8">m</span>
+<span class="size-8">b</span>
+<span class="size-8">u</span>
+<span class="size-8">r</span>
+<span class="size-8">g</span>
+<span class="size-8">e</span>
+<span class="size-8">r</span>
+<span class="size-4 lz77" data-length="4" data-dist="10"> ham</span>
+<span class="size-4 lz77" data-length="3" data-dist="4"> ha</span>
+<span class="size-2 lz77" data-length="8" data-dist="17"> hamburg</span>
+<span class="size-3 lz77" data-length="5" data-dist="8"> hamb</span>
+<span class="size-2 lz77" data-length="10" data-dist="30"> hamburger</span>
+</pre>
+    </div>
+    <script src="gz-heatmap-data.js" type="text/javascript"></script>
+    <script src="gz-heatmap-webapp.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      GZHeatmap.renderIntoDom(
+        window.GZHeatmapData,
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>
