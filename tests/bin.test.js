@@ -10,12 +10,6 @@ import puppeteer from "puppeteer";
 import prettier from "prettier";
 import { fixture, testPath } from "./utils/paths.js";
 
-/** @type {(path: string) => Promise<void>} */
-const rimrafAsync = (path) =>
-	new Promise((resolve, reject) =>
-		rimraf(path, {}, (error) => (error ? reject(error) : resolve()))
-	);
-
 const binPath = testPath("../bin/gz-heatmap.js");
 
 /**
@@ -41,7 +35,7 @@ bin.before.each(async (ctx) => {
 
 bin.after.each(async (ctx) => {
 	await ctx.page.close();
-	await rimrafAsync(ctx.output);
+	await rimraf(ctx.output);
 	ctx.output = "";
 });
 
