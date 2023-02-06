@@ -1,4 +1,4 @@
-import { getCodeLengthSize, getLZ77TotalBitSize } from "../src/utils.js";
+import { getCodeLengthSize, getLZ77TotalBitSize } from "../../src/utils.js";
 
 /** @type {(size: number, maxSize?: number) => string} */
 const sizeToClass = (size, maxSize = 0) => {

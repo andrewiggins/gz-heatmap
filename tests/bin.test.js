@@ -1,4 +1,4 @@
-import { existsSync, writeFileSync } from "fs";
+import { existsSync } from "fs";
 import { readFile, writeFile, mkdtemp } from "fs/promises";
 import { execFileSync } from "child_process";
 import { join } from "path";
@@ -69,8 +69,8 @@ async function validateFixture(ctx, fixtureDir, inputFile) {
 	const html = formatHtml(await ctx.page.content());
 
 	const expectedFixture = fixture(fixtureDir, "expected.html");
-	await writeFile(expectedFixture, html, "utf8");
 	const expectedHtml = await readFile(expectedFixture, "utf8");
+	await writeFile(expectedFixture, html, "utf8");
 
 	assert.fixture(
 		html,

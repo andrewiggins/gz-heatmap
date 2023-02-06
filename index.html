@@ -17,9 +17,9 @@
 	<body>
 		<div id="main"></div>
 		<script type="module">
-			import { renderIntoDom } from "/webapp/index.js";
+			import { renderIntoDom } from "./webapp/index.js";
 
-			fetch("/tests/fixtures/svg-6-backrefs/image.svg-metadata.json")
+			fetch("./tests/fixtures/svg-6-backrefs/image.svg-metadata.json")
 				// fetch("/tests/fixtures/svg-7-hex/image.svg-metadata.json")
 				.then((res) => res.json())
 				.then((metadata) =>
