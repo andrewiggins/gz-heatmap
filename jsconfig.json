@@ -4,6 +4,8 @@
     "module": "es2020",
     "moduleResolution": "node",
     "checkJs": true,
-    "strict": true
+    "strict": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   }
 }

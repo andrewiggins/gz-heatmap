@@ -6,6 +6,7 @@
 		<title>GZ Heatmap</title>
 		<style>
 			body {
+				color: white;
 				background-color: #252526;
 			}
 
@@ -16,8 +17,9 @@
 	</head>
 	<body>
 		<div id="main"></div>
-		<script type="module">
-			import { renderIntoDom } from "./webapp/index.js";
+		<script src="./webapp/website/index.jsx" type="module"></script>
+		<!-- <script type="module">
+			import { renderIntoDom } from "./webapp/cli/index.js";
 
 			fetch("./tests/fixtures/svg-6-backrefs/image.svg-metadata.json")
 				// fetch("/tests/fixtures/svg-7-hex/image.svg-metadata.json")
@@ -25,6 +27,6 @@
 				.then((metadata) =>
 					renderIntoDom(metadata, document.getElementById("main"))
 				);
-		</script>
+		</script> -->
 	</body>
 </html>
