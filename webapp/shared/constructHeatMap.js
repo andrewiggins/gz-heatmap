@@ -1,10 +1,33 @@
 import { getCodeLengthSize, getLZ77TotalBitSize } from "../../src/utils.js";
 
 /**
+ * @typedef Logger
+ * @property {(...args: any) => void} debug
+ *
+ * @param {HeatMapOptions} options
+ * @returns {Logger}
+ */
+function createLogger(options) {
+	return {
+		debug(...args) {
+			if (options.debug) {
+				console.log(...args);
+			}
+		},
+	};
+}
+
+/**
+ * @typedef {{ debug?: boolean }} HeatMapOptions
+ *
  * @param {Metadata} metadata
  * @param {Node} container
+ * @param {HeatMapOptions} [options]
  */
-export function constructHeatMap(metadata, container) {
+export function constructHeatMap(metadata, container, options = {}) {
+	const logger = createLogger(options);
+	logger.debug("metadata.length", metadata.length);
+
 	const maxSize = metadata.reduce(
 		(max, datum) =>
 			datum.type == "literal" && datum.value.size > max
@@ -22,7 +45,7 @@ export function constructHeatMap(metadata, container) {
 		if (datum.type == "literal") {
 			let size = datum.value.size + huffmanSize;
 
-			console.log("size:", size);
+			logger.debug("size:", size);
 			let node = createNode(datum.value.decoded, size, maxSize);
 			container.appendChild(node);
 		} else if (datum.type == "lz77") {
@@ -69,8 +92,9 @@ const notFound = (key, mapName) =>
 
 /**
  * @param {Metadata} metadata
+ * @param {Logger} logger
  */
-function countCodeUsages(metadata) {
+function countCodeUsages(metadata, logger) {
 	/** @type {(map: Map<number, { count: number; datum: any; }>, key: number, mapName: string) => void} */
 	const addOne = (map, key, mapName) => {
 		let value = map.get(key);
@@ -125,9 +149,9 @@ function countCodeUsages(metadata) {
 		}
 	}
 
-	console.log("codeLengthCodes:\n", codeLengthCodes);
-	console.log("literalCodes:\n", literalCodes);
-	console.log("distCodes:\n", distCodes);
+	logger.debug("codeLengthCodes:\n", codeLengthCodes);
+	logger.debug("literalCodes:\n", literalCodes);
+	logger.debug("distCodes:\n", distCodes);
 
 	return {
 		codeLengthCodes,
@@ -139,11 +163,13 @@ function countCodeUsages(metadata) {
 /**
  * @param {BitInfo} datum
  * @param {ReturnType<typeof countCodeUsages>} counts
+ * @param {Logger} logger
  * @returns {number}
  */
 function getHuffmanCodeSize(
 	datum,
-	{ codeLengthCodes, literalCodes, distCodes }
+	{ codeLengthCodes, literalCodes, distCodes },
+	logger
 ) {
 	let size = 0;
 
@@ -164,7 +190,7 @@ function getHuffmanCodeSize(
 		if (huffmanCode.datum.type == "code_length") {
 			let hCode = huffmanCode.datum;
 			let cLCode = codeLength.datum;
-			console.log({
+			logger.debug({
 				a_literal: {
 					bits: datum.value.bits.toString(2),
 					size: datum.value.size,

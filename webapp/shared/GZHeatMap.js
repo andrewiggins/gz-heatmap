@@ -81,6 +81,17 @@ class GZHeatMap extends HTMLElement {
 		return this.#_gzdata;
 	}
 
+	get debug() {
+		return this.hasAttribute("debug");
+	}
+	set debug(value) {
+		if (value) {
+			this.setAttribute("debug", "");
+		} else {
+			this.removeAttribute("debug");
+		}
+	}
+
 	/**
 	 * Check if a property has an instance value. If so, copy the value, and
 	 * delete the instance property so it doesn't shadow the class property
@@ -108,7 +119,7 @@ class GZHeatMap extends HTMLElement {
 	#render(gzdata) {
 		this.#container.textContent = "";
 		if (gzdata) {
-			constructHeatMap(gzdata, this.#container);
+			constructHeatMap(gzdata, this.#container, { debug: this.debug });
 		}
 	}
 }
