@@ -28,12 +28,12 @@ export function constructHeatMap(metadata, container, options = {}) {
 	const logger = createLogger(options);
 	logger.debug("metadata.length", metadata.length);
 
-	let maxSize = 0;
-	for (let datum of metadata) {
-		if (datum.type == "literal" && datum.value.size > maxSize) {
-			maxSize = datum.value.size;
-		}
-	}
+	let maxSize = 0; // Currently not using. Was previously used to normalize and distribute colors
+	// for (let datum of metadata) {
+	// 	if (datum.type == "literal" && datum.value.size > maxSize) {
+	// 		maxSize = datum.value.size;
+	// 	}
+	// }
 
 	// let counts = countCodeUsages(metadata);
 

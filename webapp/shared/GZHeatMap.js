@@ -40,7 +40,44 @@ template.innerHTML = `
 	.size-15 { background-color: #3c0000; } /* dark red 6 */
 	.size-16 { background-color: #1e0000; } /* dark red 7 */
 	.size-17 { background-color: #000000; } /* dark red 8 */
+
+	.legend {
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		font-family: monospace;
+		text-shadow: 1px 1px 2px black;
+	}
+
+	.legend > li {
+		display: inline-block;
+		padding: 0 8px;
+	}
 </style>
+<details>
+	<summary>Color legend</summary>
+	<ol class="legend">
+		<li class="size-1"><1 B</li>
+		<li class="size-2"><2 B</li>
+		<li class="size-3"><3 B</li>
+		<li class="size-4"><4 B</li>
+		<li class="size-5"><5 B</li>
+		<li class="size-6"><6 B</li>
+		<li class="size-7"><7 B</li>
+		<li class="size-8"><8 B</li>
+		<li class="size-9"><9 B</li>
+		<li class="size-10"><10 B</li>
+		<li class="size-11"><11 B</li>
+		<li class="size-12"><12 B</li>
+		<li class="size-13"><13 B</li>
+		<li class="size-14"><14 B</li>
+		<li class="size-15"><15 B</li>
+		<li class="size-16"><16 B</li>
+		<li class="size-17">>=17 B</li>
+	</ol>
+</details>
 <pre class="gz-heatmap-container"></pre>
 `;
 
