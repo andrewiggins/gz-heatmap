@@ -16,7 +16,8 @@ function App() {
 
 	const worker = workerRef.current;
 	const [url, setUrl] = useState(
-		"https://unpkg.com/preact@11.0.0-experimental.1/dist/preact.min.js"
+		"https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"
+		// "https://unpkg.com/preact@11.0.0-experimental.1/dist/preact.min.js"
 		// "/tests/fixtures/svg-6-backrefs/image.svg"
 	);
 	/** @type {[Metadata | null, import("preact/hooks").StateUpdater<Metadata | null>]} */

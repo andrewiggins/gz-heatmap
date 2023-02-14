@@ -28,13 +28,12 @@ export function constructHeatMap(metadata, container, options = {}) {
 	const logger = createLogger(options);
 	logger.debug("metadata.length", metadata.length);
 
-	const maxSize = metadata.reduce(
-		(max, datum) =>
-			datum.type == "literal" && datum.value.size > max
-				? datum.value.size
-				: max,
-		0
-	);
+	let maxSize = 0;
+	for (let datum of metadata) {
+		if (datum.type == "literal" && datum.value.size > maxSize) {
+			maxSize = datum.value.size;
+		}
+	}
 
 	// let counts = countCodeUsages(metadata);
 
@@ -54,8 +53,7 @@ export function constructHeatMap(metadata, container, options = {}) {
 			let size = totalSize / datum.length.value;
 			// let size = Math.floor(totalSize / datum.length.value);
 
-			let node = createNode(datum.chars, size, maxSize);
-			node.classList.add("lz77");
+			let node = createNode(datum.chars, size, maxSize, "lz77");
 			node.setAttribute("data-length", datum.length.value.toString());
 			node.setAttribute("data-dist", datum.dist.value.toString());
 
@@ -74,14 +72,15 @@ const sizeToClass = (size, maxSize = 0) => {
 /**
  * @param {number | number[]} text
  * @param {number} size
+ * @param {string} [className]
  * @returns {HTMLElement}
  */
-function createNode(text, size, maxSize = 0) {
+function createNode(text, size, maxSize = 0, className = "") {
 	let span = document.createElement("span");
 	span.textContent = Array.isArray(text)
-		? text.map((c) => String.fromCharCode(c)).join("")
+		? String.fromCharCode(...text)
 		: String.fromCharCode(text);
-	span.classList.add(sizeToClass(size, maxSize));
+	span.className = sizeToClass(size, maxSize) + " " + className;
 
 	return span;
 }
