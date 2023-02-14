@@ -6,6 +6,7 @@ export default defineConfig({
 	base: "/gz-heatmap/",
 	plugins: [preact()],
 	build: {
+		target: "es2022",
 		modulePreload: { polyfill: false },
 	},
 });
