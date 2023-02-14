@@ -1,0 +1,116 @@
+import { constructHeatMap } from "./constructHeatMap";
+
+const template = document.createElement("template");
+template.innerHTML = `
+<style>
+	:host {
+		display: block;
+	}
+	:host([hidden]) {
+		display: none;
+	}
+	.gz-heatmap-container {
+		color: #fff;
+		white-space: pre-wrap;
+		word-break: break-all;
+
+		/* offset-x | offset-y | blur-radius | color */
+		text-shadow: 1px 1px 2px black;
+	}
+
+	/*
+	.gz-heatmap-container span {
+		padding: 2px 0;
+		line-height: 2.2rem;
+	}
+	*/
+
+	.size-1  { background-color: #000560; } /* midnight blue */
+	.size-2  { background-color: #023d9a; } /* dark blue */
+	.size-3  { background-color: #005fd3; } /* royal blue */
+	.size-4  { background-color: #0186c0; } /* teal */
+	.size-5  { background-color: #4ab03d; } /* emerald green */
+	.size-6  { background-color: #b5d000; } /* chartreuse (lime green) */
+	.size-7  { background-color: #ebd109; } /* yellow */
+	.size-8  { background-color: #fba70f; } /* orange */
+	.size-9  { background-color: #ee0000; } /* bright red */
+	.size-10 { background-color: #d00000; } /* dark red 1 */
+	.size-11 { background-color: #b20000; } /* dark red 2 */
+	.size-12 { background-color: #950000; } /* dark red 3 */
+	.size-13 { background-color: #770000; } /* dark red 4 */
+	.size-14 { background-color: #5a0000; } /* dark red 5 */
+	.size-15 { background-color: #3c0000; } /* dark red 6 */
+	.size-16 { background-color: #1e0000; } /* dark red 7 */
+	.size-17 { background-color: #000000; } /* dark red 8 */
+</style>
+<pre class="gz-heatmap-container"></pre>
+`;
+
+class GZHeatMap extends HTMLElement {
+	/** @type {ShadowRoot} */
+	#root;
+	/** @type {HTMLPreElement} */
+	#container;
+	/** @type {Metadata | null | undefined} */
+	#_gzdata;
+
+	constructor() {
+		super();
+		/** @type {ShadowRoot} */
+		this.#root = this.attachShadow({ mode: "closed" });
+		/** @type {Metadata | null} */
+		this.#_gzdata = null;
+
+		this.#root.appendChild(template.content.cloneNode(true));
+		this.#container = /** @type {HTMLPreElement}*/ (
+			this.#root.querySelector("pre")
+		);
+	}
+
+	connectedCallback() {
+		this.#upgradeProperty("gzdata");
+	}
+
+	/** @param {Metadata | null | undefined} value */
+	set gzdata(value) {
+		this.#render(value);
+		this.#_gzdata = value;
+	}
+	/** @returns {Metadata | null | undefined} */
+	get gzdata() {
+		return this.#_gzdata;
+	}
+
+	/**
+	 * Check if a property has an instance value. If so, copy the value, and
+	 * delete the instance property so it doesn't shadow the class property
+	 * setter. Finally, pass the value to the class property setter so it can
+	 * trigger any side effects. This is to safe guard against cases where, for
+	 * instance, a framework may have added the element to the page and set a
+	 * value on one of its properties, but lazy loaded its definition. Without
+	 * this guard, the upgraded element would miss that property and the instance
+	 * property would prevent the class property setter from ever being called.
+	 * @see https://web.dev/custom-elements-best-practices/#make-properties-lazy
+	 * @param {keyof GZHeatMap} prop
+	 */
+	#upgradeProperty(prop) {
+		if (this.hasOwnProperty(prop)) {
+			let value = this[prop];
+			delete this[prop];
+			// @ts-expect-error this[prop] is using all properties of HTMLElement,
+			// some of which are readonly. We only care about local properties, e.g.
+			// `data`
+			this[prop] = value;
+		}
+	}
+
+	/** @param {Metadata | null | undefined} gzdata */
+	#render(gzdata) {
+		this.#container.textContent = "";
+		if (gzdata) {
+			constructHeatMap(gzdata, this.#container);
+		}
+	}
+}
+
+window.customElements.define("gz-heatmap", GZHeatMap);

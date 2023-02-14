@@ -21,7 +21,7 @@ function fetchData(url) {
  */
 async function compressURL(url) {
 	const input = await fetchData(url);
-	return pako.deflate(input);
+	return pako.gzip(input, { memLevel: 9 });
 }
 
 /**

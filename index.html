@@ -10,7 +10,7 @@
 				background-color: #252526;
 			}
 
-			.gz-heatmap-container {
+			gz-heatmap {
 				font-size: 2rem;
 			}
 		</style>
@@ -18,15 +18,5 @@
 	<body>
 		<div id="main"></div>
 		<script src="./webapp/website/index.jsx" type="module"></script>
-		<!-- <script type="module">
-			import { renderIntoDom } from "./webapp/cli/index.js";
-
-			fetch("./tests/fixtures/svg-6-backrefs/image.svg-metadata.json")
-				// fetch("/tests/fixtures/svg-7-hex/image.svg-metadata.json")
-				.then((res) => res.json())
-				.then((metadata) =>
-					renderIntoDom(metadata, document.getElementById("main"))
-				);
-		</script> -->
 	</body>
 </html>
