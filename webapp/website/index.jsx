@@ -1,7 +1,17 @@
+import * as comlink from "comlink";
 import { render } from "preact";
-import { useState } from "preact/hooks";
+import { useState, useRef } from "preact/hooks";
 
 function App() {
+	/** @type {import('preact').RefObject<import("./compress").CompressionWorker>} */
+	const workerRef = useRef(null);
+	if (!workerRef.current) {
+		workerRef.current = comlink.wrap(
+			new Worker(new URL("./compress.js", import.meta.url), { type: "module" })
+		);
+	}
+
+	const worker = workerRef.current;
 	const [url, setUrl] = useState(
 		"https://unpkg.com/preact@11.0.0-experimental.1/dist/preact.min.js"
 	);
@@ -17,10 +27,7 @@ function App() {
 			throw new Error(`Oh no: ${url}`);
 		}
 
-		const res = await fetch(url);
-
-		const body = await res.arrayBuffer();
-		console.log(body.byteLength);
+		console.log(await worker.compressURL(url));
 	};
 
 	return (

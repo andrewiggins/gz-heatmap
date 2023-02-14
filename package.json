@@ -12,7 +12,7 @@
     "build:cli": "rollup -c ./webapp/cli/rollup.config.js",
     "build:website": "vite build",
     "test": "uvu tests",
-    "dev": "vite"
+    "start": "vite"
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,8 @@
   "devDependencies": {
     "@preact/preset-vite": "^2.5.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
+    "comlink": "^4.4.1",
+    "pako": "^2.1.0",
     "preact": "^10.11.3",
     "puppeteer": "^19.6.3",
     "rimraf": "^4.1.2",
