@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  workflow_call:
+  pull_request:
+    branches:
+      - "**"
+  push:
+    branches:
+      - main
+      - restructure
+
+jobs:
+  build_test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: package.json
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test
+      - name: Package
+        run: |
+          npm pack
+          mv gz-heatmap-*.tgz gz-heatmap.tgz
+      - name: Upload npm package
+        uses: actions/upload-artifact@v3
+        with:
+          name: npm-package
+          path: gz-heatmap.tgz
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: dist
