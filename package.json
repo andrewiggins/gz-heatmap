@@ -12,7 +12,8 @@
     "build:cli": "rollup -c ./webapp/cli/rollup.config.js",
     "build:website": "vite build",
     "test": "uvu tests",
-    "start": "vite"
+    "start": "vite",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
