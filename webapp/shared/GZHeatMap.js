@@ -18,12 +18,10 @@ template.innerHTML = `
 		text-shadow: 1px 1px 2px black;
 	}
 
-	/*
 	.gz-heatmap-container span {
-		padding: 2px 0;
-		line-height: 2.2rem;
+		/* padding: 2px 0; */
+		/* line-height: 2.2rem; */
 	}
-	*/
 
 	.size-1  { background-color: #000560; } /* midnight blue */
 	.size-2  { background-color: #023d9a; } /* dark blue */

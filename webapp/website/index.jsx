@@ -5,6 +5,11 @@ import { useState, useRef } from "preact/hooks";
 import { gzinflate } from "../../src/index.js";
 import "../shared/GZHeatMap.js";
 
+const defaultURL =
+	"https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js";
+// const defaultURL = "https://unpkg.com/preact@11.0.0-experimental.1/dist/preact.min.js"
+// const defaultURL = "/tests/fixtures/svg-6-backrefs/image.svg"
+
 function App() {
 	/** @type {import('preact').RefObject<import("./compress").CompressionWorker>} */
 	const workerRef = useRef(null);
@@ -15,11 +20,6 @@ function App() {
 	}
 
 	const worker = workerRef.current;
-	const [url, setUrl] = useState(
-		"https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"
-		// "https://unpkg.com/preact@11.0.0-experimental.1/dist/preact.min.js"
-		// "/tests/fixtures/svg-6-backrefs/image.svg"
-	);
 	/** @type {[Metadata | null, import("preact/hooks").StateUpdater<Metadata | null>]} */
 	const [metadata, setMetadata] = useState(/**@type {any}*/ (null));
 
@@ -30,25 +30,40 @@ function App() {
 
 		const form = new FormData(/** @type {HTMLFormElement} */ (e.currentTarget));
 		const url = form.get("url")?.toString();
-		if (!url) {
-			throw new Error(`Oh no: ${url}`);
-		}
+		const file = /** @type {File | null} */ (form.get("file"));
 
-		const compresssed = await worker.compressURL(url);
-		setMetadata(gzinflate(compresssed).metadata);
+		/** @type {Uint8Array} */
+		let compressed;
+		if (url) {
+			compressed = await worker.compressURL(url);
+		} else if (file) {
+			compressed = await worker.compressBuffer(await file.arrayBuffer());
+		} else {
+			throw new Error(`Oh no! URL: ${url} FILE: ${file}`);
+		}
+		setMetadata(gzinflate(compressed).metadata);
 	};
 
 	return (
 		<>
-			<form method="#" action="get" onSubmit={onSubmit}>
-				<label>
-					URL:{" "}
+			<form
+				method="#"
+				action="get"
+				onSubmit={onSubmit}
+				style={{ marginBottom: "1rem" }}
+			>
+				<label style={{ display: "flex", gap: "8px" }}>
+					URL:
 					<input
 						type="text"
 						name="url"
-						value={url}
-						onInput={(e) => setUrl(e.currentTarget.value)}
+						defaultValue={defaultURL}
+						style={{ flex: "1 1 auto", minWidth: "150px", maxWidth: "768px" }}
 					/>
+				</label>
+				<label style={{ display: "flex", gap: "8px" }}>
+					Upload file:
+					<input type="file" name="file" />
 				</label>
 				<input type="submit" />
 			</form>

@@ -16,22 +16,19 @@ function fetchData(url) {
 }
 
 /**
- * @param {string} url
- * @returns {Promise<Uint8Array>}
- */
-async function compressURL(url) {
-	const input = await fetchData(url);
-	return pako.gzip(input, { memLevel: 9 });
-}
-
-/**
  * @typedef CompressionWorker
- * @property {typeof compressURL} compressURL
+ * @property {(url: string) => Promise<Uint8Array>} compressURL
+ * @property {(input: ArrayBuffer) => Promise<Uint8Array>} compressBuffer
  */
 
 /** @type {CompressionWorker} */
 const compressWorker = {
-	compressURL,
+	async compressURL(url) {
+		return this.compressBuffer(await fetchData(url));
+	},
+	async compressBuffer(input) {
+		return pako.gzip(input, { memLevel: 9 });
+	},
 };
 
 comlink.expose(compressWorker);
