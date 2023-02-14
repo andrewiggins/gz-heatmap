@@ -47,6 +47,29 @@ bin.after(async (ctx) => {
 const getIndexUrl = (outputDir) =>
 	pathToFileURL(join(outputDir, "index.html")).toString();
 
+/**
+ * @param {import('puppeteer').Page} page
+ * @returns {Promise<string>}
+ */
+async function getPageContent(page) {
+	const gzHeatMapEndTag = `</gz-heatmap>`;
+	let content = await page.content();
+	if (content.includes(gzHeatMapEndTag)) {
+		const heatmapContents = await page.evaluate(() =>
+			Array.from(document.querySelectorAll("gz-heatmap")).map(
+				(el) => el.shadowRoot?.innerHTML ?? ""
+			)
+		);
+
+		let i = 0;
+		content = content.replace(gzHeatMapEndTag, () => {
+			return heatmapContents[i++] + gzHeatMapEndTag;
+		});
+	}
+
+	return content;
+}
+
 /** @type {(rawHtml: string) => string} */
 function formatHtml(rawHtml) {
 	rawHtml = rawHtml
@@ -66,7 +89,7 @@ async function validateFixture(ctx, fixtureDir, inputFile) {
 	execFileSync("node", [binPath, inputFixture, "--out", ctx.output]);
 
 	await ctx.page.goto(getIndexUrl(ctx.output), { waitUntil: "networkidle2" });
-	const html = formatHtml(await ctx.page.content());
+	const html = formatHtml(await getPageContent(ctx.page));
 
 	const expectedFixture = fixture(fixtureDir, "expected.html");
 	const expectedHtml = await readFile(expectedFixture, "utf8");

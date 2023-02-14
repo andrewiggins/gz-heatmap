@@ -92,7 +92,7 @@ class GZHeatMap extends HTMLElement {
 	constructor() {
 		super();
 		/** @type {ShadowRoot} */
-		this.#root = this.attachShadow({ mode: "closed" });
+		this.#root = this.attachShadow({ mode: "open" });
 		/** @type {Metadata | null} */
 		this.#_gzdata = null;
 

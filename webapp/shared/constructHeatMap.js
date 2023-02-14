@@ -72,15 +72,20 @@ const sizeToClass = (size, maxSize = 0) => {
 /**
  * @param {number | number[]} text
  * @param {number} size
- * @param {string} [className]
+ * @param {string} [extraClass]
  * @returns {HTMLElement}
  */
-function createNode(text, size, maxSize = 0, className = "") {
+function createNode(text, size, maxSize = 0, extraClass = "") {
 	let span = document.createElement("span");
 	span.textContent = Array.isArray(text)
 		? String.fromCharCode(...text)
 		: String.fromCharCode(text);
-	span.className = sizeToClass(size, maxSize) + " " + className;
+
+	let className = sizeToClass(size, maxSize);
+	if (extraClass) {
+		className += " " + extraClass;
+	}
+	span.className = className;
 
 	return span;
 }
