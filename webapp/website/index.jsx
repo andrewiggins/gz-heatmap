@@ -13,6 +13,7 @@ import "../shared/GZHeatMap.js";
 /**
  * @typedef Data
  * @property {string} label
+ * @property {number} size
  * @property {Metadata} metadata
  */
 
@@ -69,7 +70,11 @@ function App() {
 				throw new Error(`Please enter in a URL or upload a file to analyze.`);
 			}
 
-			setData({ label, metadata: gzinflate(compressed).metadata });
+			setData({
+				label,
+				size: compressed.byteLength,
+				metadata: gzinflate(compressed).metadata,
+			});
 		} catch (e) {
 			setError(/** @type {Error}*/ (e));
 		} finally {
@@ -130,6 +135,7 @@ function App() {
 			{data && (
 				<>
 					<h2>{data.label}</h2>
+					<p>Compressed size: {data.size} B</p>
 					<gz-heatmap gzdata={data.metadata}></gz-heatmap>
 				</>
 			)}
