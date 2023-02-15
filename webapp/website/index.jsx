@@ -47,15 +47,25 @@ function App() {
 		try {
 			/** @type {Uint8Array} */
 			let compressed;
+			const newPageURL = new URL(location.href);
+
 			/** @type {string} */
 			let label;
 			if (url) {
+				newPageURL.searchParams.set("url", url);
+				history.pushState(null, "", newPageURL.toString());
+
 				label = url;
 				compressed = await worker.compressURL(url);
 			} else if (file?.name) {
+				newPageURL.searchParams.delete("url");
+				history.pushState(null, "", newPageURL.toString());
+
 				label = file.name;
 				compressed = await worker.compressBuffer(await file.arrayBuffer());
 			} else {
+				newPageURL.searchParams.delete("url");
+				history.pushState(null, "", newPageURL.toString());
 				throw new Error(`Please enter in a URL or upload a file to analyze.`);
 			}
 
