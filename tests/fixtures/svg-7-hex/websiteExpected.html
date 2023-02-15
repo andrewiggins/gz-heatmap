@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GZ Heatmap</title>
+    <style>
+      body {
+        color: white;
+        background-color: #252526;
+      }
+
+      gz-heatmap {
+        font-size: 2rem;
+      }
+    </style>
+    <script
+      type="module"
+      crossorigin=""
+      src="/gz-heatmap/assets/index.js"
+    ></script>
+  </head>
+  <body>
+    <div id="main">
+      <form method="#" action="get" style="margin-bottom: 1rem">
+        <label style="display: flex; gap: 8px"
+          >URL:<input
+            type="text"
+            name="url"
+            value=""
+            style="flex: 1 1 auto; min-width: 150px; max-width: 768px" /></label
+        ><label style="display: flex; gap: 8px"
+          >Upload file:<input type="file" name="file" /></label
+        ><input type="submit" /><button
+          type="button"
+          data-test-id="load-example"
+        >
+          Load example
+        </button>
+      </form>
+      <h2>/gz-heatmap/assets/image-fc117fdc.svg</h2>
+      <p>Compressed size: 119 B</p>
+      <gz-heatmap>
+        <style>
+          :host {
+            display: block;
+          }
+          :host([hidden]) {
+            display: none;
+          }
+          .gz-heatmap-container {
+            color: #fff;
+            white-space: pre-wrap;
+            word-break: break-all;
+
+            /* offset-x | offset-y | blur-radius | color */
+            text-shadow: 1px 1px 2px black;
+          }
+
+          .gz-heatmap-container span {
+            /* padding: 2px 0; */
+            /* line-height: 2.2rem; */
+          }
+
+          .size-1 {
+            background-color: #000560;
+          } /* midnight blue */
+          .size-2 {
+            background-color: #023d9a;
+          } /* dark blue */
+          .size-3 {
+            background-color: #005fd3;
+          } /* royal blue */
+          .size-4 {
+            background-color: #0186c0;
+          } /* teal */
+          .size-5 {
+            background-color: #4ab03d;
+          } /* emerald green */
+          .size-6 {
+            background-color: #b5d000;
+          } /* chartreuse (lime green) */
+          .size-7 {
+            background-color: #ebd109;
+          } /* yellow */
+          .size-8 {
+            background-color: #fba70f;
+          } /* orange */
+          .size-9 {
+            background-color: #ee0000;
+          } /* bright red */
+          .size-10 {
+            background-color: #d00000;
+          } /* dark red 1 */
+          .size-11 {
+            background-color: #b20000;
+          } /* dark red 2 */
+          .size-12 {
+            background-color: #950000;
+          } /* dark red 3 */
+          .size-13 {
+            background-color: #770000;
+          } /* dark red 4 */
+          .size-14 {
+            background-color: #5a0000;
+          } /* dark red 5 */
+          .size-15 {
+            background-color: #3c0000;
+          } /* dark red 6 */
+          .size-16 {
+            background-color: #1e0000;
+          } /* dark red 7 */
+          .size-17 {
+            background-color: #000000;
+          } /* dark red 8 */
+
+          .legend {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-family: monospace;
+            text-shadow: 1px 1px 2px black;
+          }
+
+          .legend > li {
+            display: inline-block;
+            padding: 0 8px;
+          }
+        </style>
+        <details>
+          <summary>Color legend</summary>
+          <ol class="legend">
+            <li class="size-1">&lt;1 B</li>
+            <li class="size-2">&lt;2 B</li>
+            <li class="size-3">&lt;3 B</li>
+            <li class="size-4">&lt;4 B</li>
+            <li class="size-5">&lt;5 B</li>
+            <li class="size-6">&lt;6 B</li>
+            <li class="size-7">&lt;7 B</li>
+            <li class="size-8">&lt;8 B</li>
+            <li class="size-9">&lt;9 B</li>
+            <li class="size-10">&lt;10 B</li>
+            <li class="size-11">&lt;11 B</li>
+            <li class="size-12">&lt;12 B</li>
+            <li class="size-13">&lt;13 B</li>
+            <li class="size-14">&lt;14 B</li>
+            <li class="size-15">&lt;15 B</li>
+            <li class="size-16">&lt;16 B</li>
+            <li class="size-17">&gt;=17 B</li>
+          </ol>
+        </details>
+        <pre class="gz-heatmap-container">
+<span class="size-5">&lt;</span>
+<span class="size-6">s</span>
+<span class="size-5">v</span>
+<span class="size-6">g</span>
+<span class="size-4"> </span>
+<span class="size-5">x</span>
+<span class="size-6">m</span>
+<span class="size-5">l</span>
+<span class="size-6">n</span>
+<span class="size-6">s</span>
+<span class="size-5">=</span>
+<span class="size-4">"</span>
+<span class="size-5">h</span>
+<span class="size-5">t</span>
+<span class="size-5">t</span>
+<span class="size-6">p</span>
+<span class="size-6">:</span>
+<span class="size-4">/</span>
+<span class="size-4">/</span>
+<span class="size-4">w</span>
+<span class="size-4">w</span>
+<span class="size-4">w</span>
+<span class="size-6">.</span>
+<span class="size-4">w</span>
+<span class="size-5">3</span>
+<span class="size-6">.</span>
+<span class="size-5">o</span>
+<span class="size-6">r</span>
+<span class="size-6">g</span>
+<span class="size-4">/</span>
+<span class="size-5">2</span>
+<span class="size-4">0</span>
+<span class="size-4">0</span>
+<span class="size-4">0</span>
+<span class="size-4">/</span>
+<span class="size-4 lz77" data-length="3" data-dist="34">svg</span>
+<span class="size-4">"</span>
+<span class="size-4"> </span>
+<span class="size-5">v</span>
+<span class="size-6">i</span>
+<span class="size-6">e</span>
+<span class="size-4">w</span>
+<span class="size-6">B</span>
+<span class="size-5">o</span>
+<span class="size-5">x</span>
+<span class="size-5">=</span>
+<span class="size-4">"</span>
+<span class="size-4">0</span>
+<span class="size-4"> </span>
+<span class="size-4">0</span>
+<span class="size-4"> </span>
+<span class="size-6">5</span>
+<span class="size-4"> </span>
+<span class="size-6">5</span>
+<span class="size-4">"</span>
+<span class="size-6">&gt;</span>
+<span class="size-5">&lt;</span>
+<span class="size-6">p</span>
+<span class="size-6">a</span>
+<span class="size-5">t</span>
+<span class="size-5">h</span>
+<span class="size-4"> </span>
+<span class="size-6">f</span>
+<span class="size-6">i</span>
+<span class="size-5">l</span>
+<span class="size-5">l</span>
+<span class="size-5">=</span>
+<span class="size-4">"</span>
+<span class="size-6">r</span>
+<span class="size-6">e</span>
+<span class="size-6">d</span>
+<span class="size-4">"</span>
+<span class="size-4"> </span>
+<span class="size-6">d</span>
+<span class="size-5">=</span>
+<span class="size-4">"</span>
+<span class="size-6">m</span>
+<span class="size-4 lz77" data-length="3" data-dist="30">0 0</span>
+<span class="size-5">h</span>
+<span class="size-5">3</span>
+<span class="size-5">v</span>
+<span class="size-5">3</span>
+<span class="size-5">h</span>
+<span class="size-6">-</span>
+<span class="size-5">3</span>
+<span class="size-4">"</span>
+<span class="size-4">/</span>
+<span class="size-1 lz77" data-length="13" data-dist="34">&gt;&lt;path fill="</span>
+<span class="size-6">#</span>
+<span class="size-4">0</span>
+<span class="size-4">0</span>
+<span class="size-6">f</span>
+<span class="size-2 lz77" data-length="6" data-dist="35">" d="m</span>
+<span class="size-5">2</span>
+<span class="size-4"> </span>
+<span class="size-5">2</span>
+<span class="size-2 lz77" data-length="11" data-dist="35">h3v3h-3"/&gt;&lt;</span>
+<span class="size-4 lz77" data-length="4" data-dist="94">/svg</span>
+<span class="size-6">&gt;</span>
+</pre>
+      </gz-heatmap>
+    </div>
+  </body>
+</html>

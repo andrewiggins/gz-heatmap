@@ -6,6 +6,17 @@ import { gzinflate } from "../../src/index.js";
 import svgUrl from "../../tests/fixtures/svg-6-backrefs/image.svg";
 import "../shared/GZHeatMap.js";
 
+/**
+ * @typedef {import("preact/hooks").StateUpdater<T>} StateUpdater
+ * @template T
+ */
+/**
+ * @typedef Data
+ * @property {string} label
+ * @property {number} size
+ * @property {Metadata} metadata
+ */
+
 const exampleURL = svgUrl;
 const defaultURL = "";
 // const defaultURL =
@@ -24,9 +35,52 @@ function App() {
 	}
 
 	const worker = workerRef.current;
-	/** @type {[Metadata | null, import("preact/hooks").StateUpdater<Metadata | null>]} */
-	const [metadata, setMetadata] = useState(/**@type {any}*/ (null));
-	const [value, setValue] = useState("");
+	const [data, setData] = useState(/**@type {Data | null}*/ (null));
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(/**@type {Error | null}*/ (null));
+
+	/** @type {(url: string | null | undefined, file: File | null) => Promise<void>} */
+	const runAnalysis = async (url, file) => {
+		setData(null);
+		setLoading(true);
+		setError(null);
+
+		try {
+			/** @type {Uint8Array} */
+			let compressed;
+			const newPageURL = new URL(location.href);
+
+			/** @type {string} */
+			let label;
+			if (url) {
+				newPageURL.searchParams.set("url", url);
+				history.pushState(null, "", newPageURL.toString());
+
+				label = url;
+				compressed = await worker.compressURL(url);
+			} else if (file?.name) {
+				newPageURL.searchParams.delete("url");
+				history.pushState(null, "", newPageURL.toString());
+
+				label = file.name;
+				compressed = await worker.compressBuffer(await file.arrayBuffer());
+			} else {
+				newPageURL.searchParams.delete("url");
+				history.pushState(null, "", newPageURL.toString());
+				throw new Error(`Please enter in a URL or upload a file to analyze.`);
+			}
+
+			setData({
+				label,
+				size: compressed.byteLength,
+				metadata: gzinflate(compressed).metadata,
+			});
+		} catch (e) {
+			setError(/** @type {Error}*/ (e));
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	/** @type {(e: Event) => Promise<void>} */
 	const onSubmit = async (e) => {
@@ -36,16 +90,7 @@ function App() {
 		const url = form.get("url")?.toString();
 		const file = /** @type {File | null} */ (form.get("file"));
 
-		/** @type {Uint8Array} */
-		let compressed;
-		if (url) {
-			compressed = await worker.compressURL(url);
-		} else if (file) {
-			compressed = await worker.compressBuffer(await file.arrayBuffer());
-		} else {
-			throw new Error(`Oh no! URL: ${url} FILE: ${file}`);
-		}
-		setMetadata(gzinflate(compressed).metadata);
+		runAnalysis(url, file);
 	};
 
 	return (
@@ -72,19 +117,29 @@ function App() {
 				<input type="submit" />
 				<button
 					type="button"
-					onClick={() => {
-						worker
-							.compressURL(exampleURL)
-							.then((compressed) =>
-								setMetadata(gzinflate(compressed).metadata)
-							);
-					}}
+					data-test-id="load-example"
+					onClick={() => runAnalysis(exampleURL, null)}
 				>
 					Load example
 				</button>
 			</form>
-			{metadata && <gz-heatmap gzdata={metadata}></gz-heatmap>}
-			{!metadata && (
+			{error && (
+				<>
+					<p class="error">❌ An error occurred: {error.message}</p>
+					<p>
+						<pre>{error.stack}</pre>
+					</p>
+				</>
+			)}
+			{loading && <p>Analyzing input...</p>}
+			{data && (
+				<>
+					<h2>{data.label}</h2>
+					<p>Compressed size: {data.size} B</p>
+					<gz-heatmap gzdata={data.metadata}></gz-heatmap>
+				</>
+			)}
+			{!data && !loading && (
 				<div>
 					Input a URL or upload a file to view a heatmap of how well your file
 					compresses

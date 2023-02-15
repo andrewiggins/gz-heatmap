@@ -91,7 +91,7 @@ async function validateFixture(ctx, fixtureDir, inputFile) {
 	await ctx.page.goto(getIndexUrl(ctx.output), { waitUntil: "networkidle2" });
 	const html = formatHtml(await getPageContent(ctx.page));
 
-	const expectedFixture = fixture(fixtureDir, "expected.html");
+	const expectedFixture = fixture(fixtureDir, "binExpected.html");
 	const expectedHtml = await readFile(expectedFixture, "utf8");
 	await writeFile(expectedFixture, html, "utf8");
 

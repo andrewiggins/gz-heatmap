@@ -24,6 +24,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run test
+        timeout-minutes: 5
       - name: Package
         run: |
           npm pack
