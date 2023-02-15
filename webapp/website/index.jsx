@@ -110,13 +110,17 @@ function App() {
 					<input type="file" name="file" />
 				</label>
 				<input type="submit" />
-				<button type="button" onClick={() => runAnalysis(exampleURL, null)}>
+				<button
+					type="button"
+					data-test-id="load-example"
+					onClick={() => runAnalysis(exampleURL, null)}
+				>
 					Load example
 				</button>
 			</form>
 			{error && (
 				<>
-					<p>❌ An error occurred: {error.message}</p>
+					<p class="error">❌ An error occurred: {error.message}</p>
 					<p>
 						<pre>{error.stack}</pre>
 					</p>
