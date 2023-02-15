@@ -34,6 +34,16 @@ const website = suite("website");
 const serverInfo = await startServer();
 const browser = await puppeteer.launch();
 
+process.on("exit", () => {
+	if (!serverInfo.server.killed) {
+		serverInfo.server.kill();
+	}
+
+	if (browser.isConnected()) {
+		browser.close();
+	}
+});
+
 website.before.each(async (ctx) => {
 	ctx.serverInfo = serverInfo;
 	ctx.browser = browser;
