@@ -38,6 +38,7 @@ website.before.each(async (ctx) => {
 	ctx.serverInfo = serverInfo;
 	ctx.browser = browser;
 	ctx.page = await ctx.browser.newPage();
+	ctx.page.setDefaultTimeout(10e3);
 });
 
 website.after.each(async (ctx) => {
