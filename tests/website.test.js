@@ -1,22 +1,24 @@
 import { readdirSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
-import { ChildProcess, execFile, spawn } from "child_process";
+import { ChildProcess, spawn } from "child_process";
 import { join, dirname } from "path";
-import { fileURLToPath, pathToFileURL } from "url";
-import rimraf from "rimraf";
+import { fileURLToPath } from "url";
 import { suite } from "uvu";
 import * as assert from "uvu/assert";
 import puppeteer from "puppeteer";
 import prettier from "prettier";
 import stripAnsi from "strip-ansi";
-import { fixture, testPath } from "./utils/paths.js";
+import treeKill from "tree-kill";
+import { fixture } from "./utils/paths.js";
 import ViteConfig from "../vite.config.js";
+import { promisify } from "util";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 /** @type {(...args: string[]) => string} */
 const repoRoot = (...args) => join(__dirname, "..", ...args);
 
 const viteConfig = /** @type {import('vite').UserConfig} */ (ViteConfig);
+const treeKillAsync = promisify(treeKill);
 
 /**
  * @typedef WebsiteSuiteContext
@@ -34,16 +36,6 @@ const website = suite("website");
 const serverInfo = await startServer();
 const browser = await puppeteer.launch();
 
-process.on("exit", () => {
-	if (!serverInfo.server.killed) {
-		serverInfo.server.kill();
-	}
-
-	if (browser.isConnected()) {
-		browser.close();
-	}
-});
-
 website.before.each(async (ctx) => {
 	ctx.serverInfo = serverInfo;
 	ctx.browser = browser;
@@ -56,7 +48,9 @@ website.after.each(async (ctx) => {
 });
 
 website.after(async (ctx) => {
-	ctx.serverInfo?.server.kill();
+	if (ctx.serverInfo && ctx.serverInfo.server.pid) {
+		await treeKillAsync(ctx.serverInfo.server.pid);
+	}
 	await ctx.browser?.close();
 });
 
