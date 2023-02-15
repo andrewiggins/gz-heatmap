@@ -135,11 +135,12 @@ async function validateFixture(ctx, fixtureDir = "svg-7-hex") {
 
 	const expectedFixture = fixture(fixtureDir, "websiteExpected.html");
 	let expectedHtml = await readFile(expectedFixture, "utf8");
-	await writeFile(expectedFixture, html, "utf8");
 
 	const indexHashRegex = /index-\w+\.js/g;
 	html = html.replace(indexHashRegex, "index.js");
 	expectedHtml = html.replace(indexHashRegex, "index.js");
+
+	await writeFile(expectedFixture, html, "utf8");
 
 	assert.fixture(
 		html,
