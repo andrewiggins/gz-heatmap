@@ -19,6 +19,7 @@ template.innerHTML = `
 		padding: 0;
 		font-family: monospace;
 		text-shadow: 1px 1px 2px black;
+		font-size: 1.5rem;
 	}
 
 	.legend > li {
@@ -78,6 +79,13 @@ template.innerHTML = `
 		filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
 	}
 </style>
+
+<h2>Heatmap</h2>
+<p>
+Each character in the gzip stream is given a color representing approximately
+the number of bytes it takes up in the gzip stream. Open the color legend to
+see what colors correspond to what byte sizes.
+</p>
 <details>
 	<summary>Color legend</summary>
 	<ol class="legend">
@@ -100,6 +108,15 @@ template.innerHTML = `
 		<li class="size-17">>=17 B</li>
 	</ol>
 </details>
+<div part="gz-container" class="gz-container heatmap"></div>
+<h2>Back references</h2>
+<p>
+Orange text represents literal text from the gzip stream.
+Blue text is test that is a back reference to previous text
+in the gzip stream. Hover over a back references to see what
+text it references.
+</p>
+<div part="gz-container" class="gz-container backref"></div>
 `;
 
 class GZHeatMap extends HTMLElement {
@@ -114,20 +131,16 @@ class GZHeatMap extends HTMLElement {
 
 	constructor() {
 		super();
-		/** @type {ShadowRoot} */
 		this.#root = this.attachShadow({ mode: "open" });
-		/** @type {Metadata | null} */
 		this.#_gzdata = null;
 
 		this.#root.appendChild(template.content.cloneNode(true));
-		this.#heatmapContainer = document.createElement("div");
-		this.#backrefContainer = document.createElement("div");
-
-		this.#heatmapContainer.className = "gz-container";
-		this.#backrefContainer.className = "gz-container";
-
-		this.#root.appendChild(this.#heatmapContainer);
-		this.#root.appendChild(this.#backrefContainer);
+		this.#heatmapContainer = /** @type {HTMLElement} */ (
+			this.#root.querySelector(".gz-container.heatmap")
+		);
+		this.#backrefContainer = /** @type {HTMLElement} */ (
+			this.#root.querySelector(".gz-container.backref")
+		);
 	}
 
 	connectedCallback() {
