@@ -22,14 +22,9 @@ export function constructBackRefs(metadata, root, options = {}) {
 	const logger = createLogger(options);
 
 	const container = document.createElement("pre");
+	const style = document.createElement("style");
+	root.appendChild(style);
 	root.appendChild(container);
-
-	// TODO: Use more cross browser approach (perhaps style tag) over
-	// constructable stylesheets. Perhaps insert style tag before 'pre' tag.
-	// Consider using `insertRule` and `deleteRule`.
-	const styleRoot = /** @type {ShadowRoot} */ (container.getRootNode());
-	const stylesheet = new CSSStyleSheet();
-	styleRoot.adoptedStyleSheets = [...styleRoot.adoptedStyleSheets, stylesheet];
 
 	container.classList.add("backrefs");
 	container.addEventListener("mouseover", (e) => {
@@ -49,11 +44,13 @@ export function constructBackRefs(metadata, root, options = {}) {
 			cssText = `${selector} { background-color: #bfd000 !important; }`;
 		}
 
-		stylesheet.replace(cssText);
+		logger.debug("settings styles", cssText);
+		style.textContent = cssText;
 	});
 
 	container.addEventListener("mouseleave", () => {
-		stylesheet.replace("");
+		logger.debug("clearing styles");
+		style.textContent = "";
 	});
 
 	let pos = 0;
