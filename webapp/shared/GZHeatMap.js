@@ -59,11 +59,23 @@ template.innerHTML = `
 	.size-17 { background-color: #000000; } /* dark red 8 */
 
 	.backrefs .literal {
+		display: inline-block;
 		background-color: #fba70f;
+		transition: all ease 0.2s;
 	}
 
-	.backrefs .lz77 {
+	.backrefs .lz77 span {
+		display: inline-block;
 		background-color: #005fd3;
+		transition: all ease 0.2s;
+	}
+
+	/* https://blog.logrocket.com/three-ways-style-css-box-shadow-effects/ */
+	.backrefs .lz77.selected span {
+		/* transform: scale(1.1); */
+		transform: translateY(-5px);
+		/* box-shadow: 0px 10px 20px 2px rgb(255 255 255 / 25%); */
+		filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
 	}
 </style>
 <details>

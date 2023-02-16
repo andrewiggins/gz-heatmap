@@ -29,19 +29,36 @@ export function constructBackRefs(metadata, root, options = {}) {
 	container.classList.add("backrefs");
 	container.addEventListener("mouseover", (e) => {
 		const target = /** @type {Element} */ (e.target);
-		let selector;
+		let lz77Container;
 		if (target.classList.contains("lz77")) {
-			selector = target.getAttribute(backRefAttr);
+			lz77Container = target;
 		} else {
 			let parent = target.parentElement;
 			if (parent && parent.classList.contains("lz77")) {
-				selector = parent.getAttribute(backRefAttr);
+				lz77Container = parent;
 			}
 		}
 
 		let cssText = "";
-		if (selector) {
-			cssText = `${selector} { background-color: #bfd000 !important; }`;
+		if (lz77Container) {
+			let selector = lz77Container.getAttribute(backRefAttr);
+			cssText = `${selector} {
+				/* transform: scale(1.1); */
+				transform: translateY(-5px);
+				/* box-shadow: 0px 10px 20px 2px rgb(255 255 255 / 25%); */
+				filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
+				background-color: #4ab03d !important;
+			}`;
+
+			lz77Container.classList.add("selected");
+			lz77Container.addEventListener(
+				"mouseleave",
+				(e) => {
+					let target = /** @type {Element} */ (e.target);
+					target.classList.remove("selected");
+				},
+				{ once: true }
+			);
 		}
 
 		logger.debug("settings styles", cssText);
