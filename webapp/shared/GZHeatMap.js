@@ -1,3 +1,4 @@
+import { constructBackRefs } from "./constructBackRefs";
 import { constructHeatMap } from "./constructHeatMap";
 
 const template = document.createElement("template");
@@ -9,7 +10,23 @@ template.innerHTML = `
 	:host([hidden]) {
 		display: none;
 	}
-	.gz-heatmap-container {
+
+	.legend {
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		font-family: monospace;
+		text-shadow: 1px 1px 2px black;
+	}
+
+	.legend > li {
+		display: inline-block;
+		padding: 0 8px;
+	}
+
+	.gz-container pre {
 		color: #fff;
 		white-space: pre-wrap;
 		word-break: break-all;
@@ -18,7 +35,7 @@ template.innerHTML = `
 		text-shadow: 1px 1px 2px black;
 	}
 
-	.gz-heatmap-container span {
+	.heatmap span {
 		/* padding: 2px 0; */
 		/* line-height: 2.2rem; */
 	}
@@ -41,19 +58,12 @@ template.innerHTML = `
 	.size-16 { background-color: #1e0000; } /* dark red 7 */
 	.size-17 { background-color: #000000; } /* dark red 8 */
 
-	.legend {
-		display: flex;
-		flex-wrap: wrap;
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		font-family: monospace;
-		text-shadow: 1px 1px 2px black;
+	.backrefs .literal {
+		background-color: #fba70f;
 	}
 
-	.legend > li {
-		display: inline-block;
-		padding: 0 8px;
+	.backrefs .lz77 {
+		background-color: #005fd3;
 	}
 </style>
 <details>
@@ -78,16 +88,17 @@ template.innerHTML = `
 		<li class="size-17">>=17 B</li>
 	</ol>
 </details>
-<pre class="gz-heatmap-container"></pre>
 `;
 
 class GZHeatMap extends HTMLElement {
 	/** @type {ShadowRoot} */
 	#root;
-	/** @type {HTMLPreElement} */
-	#container;
 	/** @type {Metadata | null | undefined} */
 	#_gzdata;
+	/** @type {HTMLElement} */
+	#heatmapContainer;
+	/** @type {HTMLElement} */
+	#backrefContainer;
 
 	constructor() {
 		super();
@@ -97,9 +108,14 @@ class GZHeatMap extends HTMLElement {
 		this.#_gzdata = null;
 
 		this.#root.appendChild(template.content.cloneNode(true));
-		this.#container = /** @type {HTMLPreElement}*/ (
-			this.#root.querySelector("pre")
-		);
+		this.#heatmapContainer = document.createElement("div");
+		this.#backrefContainer = document.createElement("div");
+
+		this.#heatmapContainer.className = "gz-container";
+		this.#backrefContainer.className = "gz-container";
+
+		this.#root.appendChild(this.#heatmapContainer);
+		this.#root.appendChild(this.#backrefContainer);
 	}
 
 	connectedCallback() {
@@ -152,9 +168,14 @@ class GZHeatMap extends HTMLElement {
 
 	/** @param {Metadata | null | undefined} gzdata */
 	#render(gzdata) {
-		this.#container.textContent = "";
+		this.#heatmapContainer.textContent = "";
+		this.#backrefContainer.textContent = "";
+
 		if (gzdata) {
-			constructHeatMap(gzdata, this.#container, { debug: this.debug });
+			const debug = this.debug;
+			// const debug = true;
+			constructHeatMap(gzdata, this.#heatmapContainer, { debug });
+			constructBackRefs(gzdata, this.#backrefContainer, { debug });
 		}
 	}
 }
