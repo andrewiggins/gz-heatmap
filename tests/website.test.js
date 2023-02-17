@@ -136,19 +136,19 @@ function formatHtml(rawHtml) {
  * @param {string} fixtureDir
  */
 async function validateFixture(ctx, fixtureDir = "svg-7-hex") {
-	let html = formatHtml(await getPageContent(ctx.page));
+	let actualHtml = formatHtml(await getPageContent(ctx.page));
 
-	const expectedFixture = fixture(fixtureDir, "websiteExpected.html");
-	let expectedHtml = await readFile(expectedFixture, "utf8");
+	const expectedFixturePath = fixture(fixtureDir, "websiteExpected.html");
+	let expectedHtml = await readFile(expectedFixturePath, "utf8");
 
 	const indexHashRegex = /index-\w+\.js/g;
-	html = html.replace(indexHashRegex, "index.js");
-	expectedHtml = html.replace(indexHashRegex, "index.js");
+	actualHtml = actualHtml.replace(indexHashRegex, "index.js");
+	expectedHtml = expectedHtml.replace(indexHashRegex, "index.js");
 
-	await writeFile(expectedFixture, html, "utf8");
+	await writeFile(expectedFixturePath, actualHtml, "utf8");
 
 	assert.fixture(
-		html,
+		actualHtml,
 		expectedHtml,
 		`page html did not match expected fixture`
 	);
