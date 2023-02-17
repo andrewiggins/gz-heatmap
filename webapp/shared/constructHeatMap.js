@@ -1,32 +1,19 @@
 import { getCodeLengthSize, getLZ77TotalBitSize } from "../../src/utils.js";
-
-/**
- * @typedef Logger
- * @property {(...args: any) => void} debug
- *
- * @param {HeatMapOptions} options
- * @returns {Logger}
- */
-function createLogger(options) {
-	return {
-		debug(...args) {
-			if (options.debug) {
-				console.log(...args);
-			}
-		},
-	};
-}
+import { createLogger } from "./logger.js";
 
 /**
  * @typedef {{ debug?: boolean }} HeatMapOptions
  *
  * @param {Metadata} metadata
- * @param {Node} container
+ * @param {Element} root
  * @param {HeatMapOptions} [options]
  */
-export function constructHeatMap(metadata, container, options = {}) {
+export function constructHeatMap(metadata, root, options = {}) {
 	const logger = createLogger(options);
 	logger.debug("metadata.length", metadata.length);
+
+	let container = document.createElement("pre");
+	container.className = "heatmap";
 
 	let maxSize = 0; // Currently not using. Was previously used to normalize and distribute colors
 	// for (let datum of metadata) {
@@ -59,6 +46,8 @@ export function constructHeatMap(metadata, container, options = {}) {
 
 			container.appendChild(node);
 		}
+
+		root.appendChild(container);
 	}
 }
 
@@ -96,7 +85,7 @@ const notFound = (key, mapName) =>
 
 /**
  * @param {Metadata} metadata
- * @param {Logger} logger
+ * @param {import('./logger').Logger} logger
  */
 function countCodeUsages(metadata, logger) {
 	/** @type {(map: Map<number, { count: number; datum: any; }>, key: number, mapName: string) => void} */
@@ -167,7 +156,7 @@ function countCodeUsages(metadata, logger) {
 /**
  * @param {BitInfo} datum
  * @param {ReturnType<typeof countCodeUsages>} counts
- * @param {Logger} logger
+ * @param {import('./logger').Logger} logger
  * @returns {number}
  */
 function getHuffmanCodeSize(

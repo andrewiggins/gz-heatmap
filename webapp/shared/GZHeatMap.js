@@ -1,3 +1,4 @@
+import { constructBackRefs } from "./constructBackRefs";
 import { constructHeatMap } from "./constructHeatMap";
 
 const template = document.createElement("template");
@@ -9,7 +10,24 @@ template.innerHTML = `
 	:host([hidden]) {
 		display: none;
 	}
-	.gz-heatmap-container {
+
+	.legend {
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		font-family: monospace;
+		text-shadow: 1px 1px 2px black;
+		font-size: 1.5rem;
+	}
+
+	.legend > li {
+		display: inline-block;
+		padding: 0 8px;
+	}
+
+	.gz-container pre {
 		color: #fff;
 		white-space: pre-wrap;
 		word-break: break-all;
@@ -18,7 +36,7 @@ template.innerHTML = `
 		text-shadow: 1px 1px 2px black;
 	}
 
-	.gz-heatmap-container span {
+	.heatmap span {
 		/* padding: 2px 0; */
 		/* line-height: 2.2rem; */
 	}
@@ -41,21 +59,33 @@ template.innerHTML = `
 	.size-16 { background-color: #1e0000; } /* dark red 7 */
 	.size-17 { background-color: #000000; } /* dark red 8 */
 
-	.legend {
-		display: flex;
-		flex-wrap: wrap;
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		font-family: monospace;
-		text-shadow: 1px 1px 2px black;
+	.backrefs .literal {
+		display: inline-block;
+		background-color: #fba70f;
+		transition: all ease 0.2s;
 	}
 
-	.legend > li {
+	.backrefs .lz77 span {
 		display: inline-block;
-		padding: 0 8px;
+		background-color: #005fd3;
+		transition: all ease 0.2s;
+	}
+
+	/* https://blog.logrocket.com/three-ways-style-css-box-shadow-effects/ */
+	.backrefs .lz77.selected span {
+		/* transform: scale(1.1); */
+		transform: translateY(-5px);
+		/* box-shadow: 0px 10px 20px 2px rgb(255 255 255 / 25%); */
+		filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
 	}
 </style>
+
+<h2>Heatmap</h2>
+<p>
+Each character in the gzip stream is given a color representing approximately
+the number of bytes it takes up in the gzip stream. Open the color legend to
+see what colors correspond to what byte sizes.
+</p>
 <details>
 	<summary>Color legend</summary>
 	<ol class="legend">
@@ -78,27 +108,38 @@ template.innerHTML = `
 		<li class="size-17">>=17 B</li>
 	</ol>
 </details>
-<pre class="gz-heatmap-container"></pre>
+<div part="gz-container" class="gz-container heatmap"></div>
+<h2>Back references</h2>
+<p>
+Orange text represents literal text from the gzip stream.
+Blue text is test that is a back reference to previous text
+in the gzip stream. Hover over a back references to see what
+text it references.
+</p>
+<div part="gz-container" class="gz-container backref"></div>
 `;
 
 class GZHeatMap extends HTMLElement {
 	/** @type {ShadowRoot} */
 	#root;
-	/** @type {HTMLPreElement} */
-	#container;
 	/** @type {Metadata | null | undefined} */
 	#_gzdata;
+	/** @type {HTMLElement} */
+	#heatmapContainer;
+	/** @type {HTMLElement} */
+	#backrefContainer;
 
 	constructor() {
 		super();
-		/** @type {ShadowRoot} */
 		this.#root = this.attachShadow({ mode: "open" });
-		/** @type {Metadata | null} */
 		this.#_gzdata = null;
 
 		this.#root.appendChild(template.content.cloneNode(true));
-		this.#container = /** @type {HTMLPreElement}*/ (
-			this.#root.querySelector("pre")
+		this.#heatmapContainer = /** @type {HTMLElement} */ (
+			this.#root.querySelector(".gz-container.heatmap")
+		);
+		this.#backrefContainer = /** @type {HTMLElement} */ (
+			this.#root.querySelector(".gz-container.backref")
 		);
 	}
 
@@ -152,9 +193,14 @@ class GZHeatMap extends HTMLElement {
 
 	/** @param {Metadata | null | undefined} gzdata */
 	#render(gzdata) {
-		this.#container.textContent = "";
+		this.#heatmapContainer.textContent = "";
+		this.#backrefContainer.textContent = "";
+
 		if (gzdata) {
-			constructHeatMap(gzdata, this.#container, { debug: this.debug });
+			const debug = this.debug;
+			// const debug = true;
+			constructHeatMap(gzdata, this.#heatmapContainer, { debug });
+			constructBackRefs(gzdata, this.#backrefContainer, { debug });
 		}
 	}
 }

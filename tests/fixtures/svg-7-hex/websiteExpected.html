@@ -10,7 +10,7 @@
         background-color: #252526;
       }
 
-      gz-heatmap {
+      gz-heatmap::part(gz-container) {
         font-size: 2rem;
       }
     </style>
@@ -22,6 +22,7 @@
   </head>
   <body>
     <div id="main">
+      <h1>GZ Heatmap</h1>
       <form method="#" action="get" style="margin-bottom: 1rem">
         <label style="display: flex; gap: 8px"
           >URL:<input
@@ -48,7 +49,24 @@
           :host([hidden]) {
             display: none;
           }
-          .gz-heatmap-container {
+
+          .legend {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-family: monospace;
+            text-shadow: 1px 1px 2px black;
+            font-size: 1.5rem;
+          }
+
+          .legend > li {
+            display: inline-block;
+            padding: 0 8px;
+          }
+
+          .gz-container pre {
             color: #fff;
             white-space: pre-wrap;
             word-break: break-all;
@@ -57,7 +75,7 @@
             text-shadow: 1px 1px 2px black;
           }
 
-          .gz-heatmap-container span {
+          .heatmap span {
             /* padding: 2px 0; */
             /* line-height: 2.2rem; */
           }
@@ -114,21 +132,33 @@
             background-color: #000000;
           } /* dark red 8 */
 
-          .legend {
-            display: flex;
-            flex-wrap: wrap;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            font-family: monospace;
-            text-shadow: 1px 1px 2px black;
+          .backrefs .literal {
+            display: inline-block;
+            background-color: #fba70f;
+            transition: all ease 0.2s;
           }
 
-          .legend > li {
+          .backrefs .lz77 span {
             display: inline-block;
-            padding: 0 8px;
+            background-color: #005fd3;
+            transition: all ease 0.2s;
+          }
+
+          /* https://blog.logrocket.com/three-ways-style-css-box-shadow-effects/ */
+          .backrefs .lz77.selected span {
+            /* transform: scale(1.1); */
+            transform: translateY(-5px);
+            /* box-shadow: 0px 10px 20px 2px rgb(255 255 255 / 25%); */
+            filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
           }
         </style>
+
+        <h2>Heatmap</h2>
+        <p>
+          Each character in the gzip stream is given a color representing
+          approximately the number of bytes it takes up in the gzip stream. Open
+          the color legend to see what colors correspond to what byte sizes.
+        </p>
         <details>
           <summary>Color legend</summary>
           <ol class="legend">
@@ -151,7 +181,8 @@
             <li class="size-17">&gt;=17 B</li>
           </ol>
         </details>
-        <pre class="gz-heatmap-container">
+        <div part="gz-container" class="gz-container heatmap">
+          <pre class="heatmap">
 <span class="size-5">&lt;</span>
 <span class="size-6">s</span>
 <span class="size-5">v</span>
@@ -252,6 +283,157 @@
 <span class="size-4 lz77" data-length="4" data-dist="94">/svg</span>
 <span class="size-6">&gt;</span>
 </pre>
+        </div>
+        <h2>Back references</h2>
+        <p>
+          Orange text represents literal text from the gzip stream. Blue text is
+          test that is a back reference to previous text in the gzip stream.
+          Hover over a back references to see what text it references.
+        </p>
+        <div part="gz-container" class="gz-container backref">
+          <style></style>
+          <pre class="backrefs">
+<span class="literal pos-0">&lt;</span>
+<span class="literal pos-1">s</span>
+<span class="literal pos-2">v</span>
+<span class="literal pos-3">g</span>
+<span class="literal pos-4"> </span>
+<span class="literal pos-5">x</span>
+<span class="literal pos-6">m</span>
+<span class="literal pos-7">l</span>
+<span class="literal pos-8">n</span>
+<span class="literal pos-9">s</span>
+<span class="literal pos-10">=</span>
+<span class="literal pos-11">"</span>
+<span class="literal pos-12">h</span>
+<span class="literal pos-13">t</span>
+<span class="literal pos-14">t</span>
+<span class="literal pos-15">p</span>
+<span class="literal pos-16">:</span>
+<span class="literal pos-17">/</span>
+<span class="literal pos-18">/</span>
+<span class="literal pos-19">w</span>
+<span class="literal pos-20">w</span>
+<span class="literal pos-21">w</span>
+<span class="literal pos-22">.</span>
+<span class="literal pos-23">w</span>
+<span class="literal pos-24">3</span>
+<span class="literal pos-25">.</span>
+<span class="literal pos-26">o</span>
+<span class="literal pos-27">r</span>
+<span class="literal pos-28">g</span>
+<span class="literal pos-29">/</span>
+<span class="literal pos-30">2</span>
+<span class="literal pos-31">0</span>
+<span class="literal pos-32">0</span>
+<span class="literal pos-33">0</span>
+<span class="literal pos-34">/</span>
+<span class="lz77" data-backref-selector=".pos-1, .pos-2, .pos-3">
+<span class="pos-35">s</span>
+<span class="pos-36">v</span>
+<span class="pos-37">g</span></span>
+<span class="literal pos-38">"</span>
+<span class="literal pos-39"> </span>
+<span class="literal pos-40">v</span>
+<span class="literal pos-41">i</span>
+<span class="literal pos-42">e</span>
+<span class="literal pos-43">w</span>
+<span class="literal pos-44">B</span>
+<span class="literal pos-45">o</span>
+<span class="literal pos-46">x</span>
+<span class="literal pos-47">=</span>
+<span class="literal pos-48">"</span>
+<span class="literal pos-49">0</span>
+<span class="literal pos-50"> </span>
+<span class="literal pos-51">0</span>
+<span class="literal pos-52"> </span>
+<span class="literal pos-53">5</span>
+<span class="literal pos-54"> </span>
+<span class="literal pos-55">5</span>
+<span class="literal pos-56">"</span>
+<span class="literal pos-57">&gt;</span>
+<span class="literal pos-58">&lt;</span>
+<span class="literal pos-59">p</span>
+<span class="literal pos-60">a</span>
+<span class="literal pos-61">t</span>
+<span class="literal pos-62">h</span>
+<span class="literal pos-63"> </span>
+<span class="literal pos-64">f</span>
+<span class="literal pos-65">i</span>
+<span class="literal pos-66">l</span>
+<span class="literal pos-67">l</span>
+<span class="literal pos-68">=</span>
+<span class="literal pos-69">"</span>
+<span class="literal pos-70">r</span>
+<span class="literal pos-71">e</span>
+<span class="literal pos-72">d</span>
+<span class="literal pos-73">"</span>
+<span class="literal pos-74"> </span>
+<span class="literal pos-75">d</span>
+<span class="literal pos-76">=</span>
+<span class="literal pos-77">"</span>
+<span class="literal pos-78">m</span>
+<span class="lz77" data-backref-selector=".pos-49, .pos-50, .pos-51">
+<span class="pos-79">0</span>
+<span class="pos-80"> </span>
+<span class="pos-81">0</span></span>
+<span class="literal pos-82">h</span>
+<span class="literal pos-83">3</span>
+<span class="literal pos-84">v</span>
+<span class="literal pos-85">3</span>
+<span class="literal pos-86">h</span>
+<span class="literal pos-87">-</span>
+<span class="literal pos-88">3</span>
+<span class="literal pos-89">"</span>
+<span class="literal pos-90">/</span>
+<span class="lz77" data-backref-selector=".pos-57, .pos-58, .pos-59, .pos-60, .pos-61, .pos-62, .pos-63, .pos-64, .pos-65, .pos-66, .pos-67, .pos-68, .pos-69">
+<span class="pos-91">&gt;</span>
+<span class="pos-92">&lt;</span>
+<span class="pos-93">p</span>
+<span class="pos-94">a</span>
+<span class="pos-95">t</span>
+<span class="pos-96">h</span>
+<span class="pos-97"> </span>
+<span class="pos-98">f</span>
+<span class="pos-99">i</span>
+<span class="pos-100">l</span>
+<span class="pos-101">l</span>
+<span class="pos-102">=</span>
+<span class="pos-103">"</span></span>
+<span class="literal pos-104">#</span>
+<span class="literal pos-105">0</span>
+<span class="literal pos-106">0</span>
+<span class="literal pos-107">f</span>
+<span class="lz77" data-backref-selector=".pos-73, .pos-74, .pos-75, .pos-76, .pos-77, .pos-78">
+<span class="pos-108">"</span>
+<span class="pos-109"> </span>
+<span class="pos-110">d</span>
+<span class="pos-111">=</span>
+<span class="pos-112">"</span>
+<span class="pos-113">m</span></span>
+<span class="literal pos-114">2</span>
+<span class="literal pos-115"> </span>
+<span class="literal pos-116">2</span>
+<span class="lz77" data-backref-selector=".pos-82, .pos-83, .pos-84, .pos-85, .pos-86, .pos-87, .pos-88, .pos-89, .pos-90, .pos-91, .pos-92">
+<span class="pos-117">h</span>
+<span class="pos-118">3</span>
+<span class="pos-119">v</span>
+<span class="pos-120">3</span>
+<span class="pos-121">h</span>
+<span class="pos-122">-</span>
+<span class="pos-123">3</span>
+<span class="pos-124">"</span>
+<span class="pos-125">/</span>
+<span class="pos-126">&gt;</span>
+<span class="pos-127">&lt;</span></span>
+<span class="lz77" data-backref-selector=".pos-34, .pos-35, .pos-36, .pos-37">
+<span class="pos-128">/</span>
+<span class="pos-129">s</span>
+<span class="pos-130">v</span>
+<span class="pos-131">g</span></span>
+<span class="literal pos-132">&gt;</span>
+</pre>
+        </div>
       </gz-heatmap>
     </div>
   </body>
