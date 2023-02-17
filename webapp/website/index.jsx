@@ -101,7 +101,12 @@ function App() {
 				method="#"
 				action="get"
 				onSubmit={onSubmit}
-				style={{ marginBottom: "1rem" }}
+				style={{
+					display: "flex",
+					gap: "8px",
+					flexDirection: "column",
+					marginBottom: "1rem",
+				}}
 			>
 				<label style={{ display: "flex", gap: "8px" }}>
 					URL:
@@ -116,14 +121,16 @@ function App() {
 					Upload file:
 					<input type="file" name="file" />
 				</label>
-				<input type="submit" />
-				<button
-					type="button"
-					data-test-id="load-example"
-					onClick={() => runAnalysis(exampleURL, null)}
-				>
-					Load example
-				</button>
+				<div>
+					<input type="submit" />
+					<button
+						type="button"
+						data-test-id="load-example"
+						onClick={() => runAnalysis(exampleURL, null)}
+					>
+						Load example
+					</button>
+				</div>
 			</form>
 			{error && (
 				<>
