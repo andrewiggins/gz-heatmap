@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Examine a heatmap of gzip files to better understand how gzip compresses your code"
+    />
     <title>GZ Heatmap</title>
     <style>
       body {
@@ -24,7 +28,16 @@
     <div id="main">
       <h1>GZ Heatmap</h1>
       <p>Upload a text file to see how GZip compresses your file.</p>
-      <form method="#" action="get" style="margin-bottom: 1rem">
+      <form
+        method="#"
+        action="get"
+        style="
+          display: flex;
+          gap: 8px;
+          flex-direction: column;
+          margin-bottom: 1rem;
+        "
+      >
         <label style="display: flex; gap: 8px"
           >URL:<input
             type="text"
@@ -32,13 +45,16 @@
             value=""
             style="flex: 1 1 auto; min-width: 150px; max-width: 768px" /></label
         ><label style="display: flex; gap: 8px"
-          >Upload file:<input type="file" name="file" /></label
-        ><input type="submit" /><button
-          type="button"
-          data-test-id="load-example"
-        >
-          Load example
-        </button>
+          >Upload file:<input type="file" name="file"
+        /></label>
+        <div>
+          <input type="submit" /><button
+            type="button"
+            data-test-id="load-example"
+          >
+            Load example
+          </button>
+        </div>
       </form>
       <h2>/gz-heatmap/assets/image-fc117fdc.svg</h2>
       <p>Compressed size: 119 B</p>
