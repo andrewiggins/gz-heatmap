@@ -95,6 +95,7 @@ function App() {
 
 	return (
 		<>
+			<h1>GZ Heatmap</h1>
 			<form
 				method="#"
 				action="get"
