@@ -96,6 +96,7 @@ function App() {
 	return (
 		<>
 			<h1>GZ Heatmap</h1>
+			<p>Upload a text file to see how GZip compresses your file.</p>
 			<form
 				method="#"
 				action="get"
