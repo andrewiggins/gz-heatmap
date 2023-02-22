@@ -126,38 +126,84 @@
             /* box-shadow: 0px 10px 20px 2px rgb(255 255 255 / 25%); */
             filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
           }
+
+          table.stats {
+            border-collapse: collapse;
+            border-spacing: 0;
+            text-align: left;
+          }
+
+          table.stats :is(td, th) {
+            border-bottom: 0.05rem solid #dadee4;
+            padding: 0.6rem 0.4rem;
+          }
+
+          table.stats > tbody td:not(:first-child) {
+            font-variant-numeric: tabular-nums;
+            text-align: right;
+          }
         </style>
 
-        <h2>Heatmap</h2>
-        <p>
-          Each character in the gzip stream is given a color representing
-          approximately the number of bytes it takes up in the gzip stream. Open
-          the color legend to see what colors correspond to what byte sizes.
-        </p>
-        <details>
-          <summary>Color legend</summary>
-          <ol class="legend">
-            <li class="size-1">&lt;1 B</li>
-            <li class="size-2">&lt;2 B</li>
-            <li class="size-3">&lt;3 B</li>
-            <li class="size-4">&lt;4 B</li>
-            <li class="size-5">&lt;5 B</li>
-            <li class="size-6">&lt;6 B</li>
-            <li class="size-7">&lt;7 B</li>
-            <li class="size-8">&lt;8 B</li>
-            <li class="size-9">&lt;9 B</li>
-            <li class="size-10">&lt;10 B</li>
-            <li class="size-11">&lt;11 B</li>
-            <li class="size-12">&lt;12 B</li>
-            <li class="size-13">&lt;13 B</li>
-            <li class="size-14">&lt;14 B</li>
-            <li class="size-15">&lt;15 B</li>
-            <li class="size-16">&lt;16 B</li>
-            <li class="size-17">&gt;=17 B</li>
-          </ol>
-        </details>
-        <div part="gz-container" class="gz-container heatmap">
-          <pre class="heatmap">
+        <h2>Stats</h2>
+        <div part="stats">
+          <table class="stats">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Count</th>
+                <th>Compressed bytes</th>
+                <th>Expanded bytes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Literals</td>
+                <td>13</td>
+                <td>13 B</td>
+                <td>13 B</td>
+              </tr>
+              <tr>
+                <td>LZ77 Backrefs</td>
+                <td>5</td>
+                <td>9 B</td>
+                <td>30 B</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="message"></p>
+        <section class="heatmap">
+          <h2>Heatmap</h2>
+          <p>
+            Each character in the gzip stream is given a color representing
+            approximately the number of bytes it takes up in the gzip stream.
+            Open the color legend to see what colors correspond to what byte
+            sizes.
+          </p>
+          <details>
+            <summary>Color legend</summary>
+            <ol class="legend">
+              <li class="size-1">&lt;1 B</li>
+              <li class="size-2">&lt;2 B</li>
+              <li class="size-3">&lt;3 B</li>
+              <li class="size-4">&lt;4 B</li>
+              <li class="size-5">&lt;5 B</li>
+              <li class="size-6">&lt;6 B</li>
+              <li class="size-7">&lt;7 B</li>
+              <li class="size-8">&lt;8 B</li>
+              <li class="size-9">&lt;9 B</li>
+              <li class="size-10">&lt;10 B</li>
+              <li class="size-11">&lt;11 B</li>
+              <li class="size-12">&lt;12 B</li>
+              <li class="size-13">&lt;13 B</li>
+              <li class="size-14">&lt;14 B</li>
+              <li class="size-15">&lt;15 B</li>
+              <li class="size-16">&lt;16 B</li>
+              <li class="size-17">&gt;=17 B</li>
+            </ol>
+          </details>
+          <div part="gz-container" class="gz-container heatmap">
+            <pre class="heatmap">
 <span class="size-8">h</span>
 <span class="size-8">a</span>
 <span class="size-8">m</span>
@@ -177,16 +223,18 @@
 <span class="size-3 lz77" data-length="5" data-dist="8"> hamb</span>
 <span class="size-2 lz77" data-length="10" data-dist="30"> hamburger</span>
 </pre>
-        </div>
-        <h2>Back references</h2>
-        <p>
-          Orange text represents literal text from the gzip stream. Blue text is
-          test that is a back reference to previous text in the gzip stream.
-          Hover over a back references to see what text it references.
-        </p>
-        <div part="gz-container" class="gz-container backref">
-          <style></style>
-          <pre class="backrefs">
+          </div>
+        </section>
+        <section class="backref">
+          <h2>Back references</h2>
+          <p>
+            Orange text represents literal text from the gzip stream. Blue text
+            is test that is a back reference to previous text in the gzip
+            stream. Hover over a back references to see what text it references.
+          </p>
+          <div part="gz-container" class="gz-container backref">
+            <style></style>
+            <pre class="backrefs">
 <span class="literal pos-0">h</span>
 <span class="literal pos-1">a</span>
 <span class="literal pos-2">m</span>
@@ -236,7 +284,8 @@
 <span class="pos-41">e</span>
 <span class="pos-42">r</span></span>
 </pre>
-        </div>
+          </div>
+        </section>
       </gz-heatmap>
     </div>
     <script src="gz-heatmap-data.js" type="text/javascript"></script>
