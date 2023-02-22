@@ -264,6 +264,11 @@ class GZHeatMap extends HTMLElement {
 
 	/** @param {import('../shared/computeStats').Stats} stats*/
 	#setStats(stats) {
+		const compressionMetadata =
+			stats.gzipHeader.byteLength +
+			stats.gzipFooter.byteLength +
+			bitsToBytes(stats.metadata.bitsCompressed);
+
 		this.#statsContainer.innerHTML = `
 			<table class="stats">
 				<thead>
@@ -285,6 +290,18 @@ class GZHeatMap extends HTMLElement {
 						<td>${formatNum(stats.lz77s.count)}</td>
 						<td>${formatNum(bitsToBytes(stats.lz77s.bitsCompressed))} B</td>
 						<td>${formatNum(stats.lz77s.bytesExpanded)} B</td>
+					</tr>
+					<tr>
+						<td>Code Length tables</td>
+						<td></td>
+						<td>${formatNum(bitsToBytes(stats.codeLengthTables.bitsCompressed))} B</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Other compression metadata</td>
+						<td></td>
+						<td>${formatNum(compressionMetadata)} B</td>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>

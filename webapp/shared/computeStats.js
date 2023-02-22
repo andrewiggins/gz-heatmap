@@ -31,10 +31,12 @@ export function computeStats(data) {
 	for (let datum of data) {
 		switch (datum.type) {
 			case "gzip_header":
-				stats.gzipHeader.byteLength = datum.bytes.length;
+				// TODO: Why is this null when running in the bin test?
+				stats.gzipHeader.byteLength = datum.bytes?.byteLength ?? 0;
 				break;
 			case "gzip_footer":
-				stats.gzipFooter.byteLength = datum.bytes.length;
+				// TODO: Why is this null when running in the bin test?
+				stats.gzipFooter.byteLength = datum.bytes?.byteLength ?? 0;
 				break;
 			case "bfinal":
 			case "btype":
