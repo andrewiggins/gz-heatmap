@@ -1,0 +1,24 @@
+{
+  "gzipHeader": {
+    "byteLength": 10
+  },
+  "gzipFooter": {
+    "byteLength": 8
+  },
+  "metadata": {
+    "bitsCompressed": 24
+  },
+  "codeLengthTables": {
+    "bitsCompressed": 267
+  },
+  "literals": {
+    "count": 93,
+    "bitsCompressed": 455,
+    "bytesExpanded": 93
+  },
+  "lz77s": {
+    "count": 6,
+    "bitsCompressed": 70,
+    "bytesExpanded": 41
+  }
+}

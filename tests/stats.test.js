@@ -28,8 +28,7 @@ testFiles.forEach((testFile) => {
 		const expectedOut = await readFixture(fixture(testFile));
 
 		const statsFixturePath = fixture(testFile + ".stats.json");
-		// const expectedStats = await readFixture(statsFixturePath);
-		// const expectedStats = "{}";
+		const expectedStats = await readFixture(statsFixturePath);
 
 		const out = Buffer.alloc(expectedOut.length);
 		const { metadata } = gzinflate(input, out);
@@ -40,7 +39,7 @@ testFiles.forEach((testFile) => {
 
 		assert.is(out.toString("utf8"), expectedOut);
 
-		// assert.fixture(actualStats, expectedStats);
+		assert.fixture(actualStats, expectedStats);
 		assert.is(getBytesExpanded(stats), expectedOut.length);
 		assert.is(getBitsCompressed(stats), getTotalEncodedBitSize(metadata));
 		assert.is(getBytesCompressed(stats), input.byteLength);
