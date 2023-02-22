@@ -3,19 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Examine a heatmap of gzip files to better understand how gzip compresses your code"
+    />
     <title>GZ Heatmap</title>
     <style>
       body {
+        color: white;
         background-color: #252526;
       }
 
-      gz-heatmap {
+      gz-heatmap::part(gz-container) {
         font-size: 2rem;
       }
     </style>
+    <script
+      type="module"
+      crossorigin=""
+      src="/gz-heatmap/assets/index.js"
+    ></script>
   </head>
   <body>
-    <div id="root">
+    <div id="main">
+      <h1>GZ Heatmap</h1>
+      <p>Upload a text file to see how GZip compresses your file.</p>
+      <form
+        method="#"
+        action="get"
+        style="
+          display: flex;
+          gap: 8px;
+          flex-direction: column;
+          margin-bottom: 1rem;
+        "
+      >
+        <label style="display: flex; gap: 8px"
+          >URL:<input
+            type="text"
+            name="url"
+            value=""
+            style="flex: 1 1 auto; min-width: 150px; max-width: 768px" /></label
+        ><label style="display: flex; gap: 8px"
+          >Upload file:<input type="file" name="file"
+        /></label>
+        <div>
+          <input type="submit" /><button
+            type="button"
+            data-test-id="load-example"
+          >
+            Load example
+          </button>
+        </div>
+      </form>
+      <h2>google.html</h2>
+      <p>Compressed size: 53,210 B</p>
       <gz-heatmap>
         <style>
           :host {
@@ -158,21 +200,23 @@
             <tbody>
               <tr>
                 <td>Literals</td>
-                <td>13</td>
-                <td>13 B</td>
-                <td>13 B</td>
+                <td>22,026</td>
+                <td>19,128 B</td>
+                <td>22,026 B</td>
               </tr>
               <tr>
                 <td>LZ77 Backrefs</td>
-                <td>5</td>
-                <td>9 B</td>
-                <td>30 B</td>
+                <td>14,675</td>
+                <td>33,934 B</td>
+                <td>176,903 B</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p class="message"></p>
-        <section class="heatmap">
+        <p class="message">
+          File too large to show character breakdown analysis (size: 198,929 B)
+        </p>
+        <section class="heatmap" hidden="">
           <h2>Heatmap</h2>
           <p>
             Each character in the gzip stream is given a color representing
@@ -202,99 +246,18 @@
               <li class="size-17">&gt;=17 B</li>
             </ol>
           </details>
-          <div part="gz-container" class="gz-container heatmap">
-            <pre class="heatmap">
-<span class="size-8">h</span>
-<span class="size-8">a</span>
-<span class="size-8">m</span>
-<span class="size-8"> </span>
-<span class="size-8">h</span>
-<span class="size-8">a</span>
-<span class="size-8">m</span>
-<span class="size-8">b</span>
-<span class="size-8">u</span>
-<span class="size-8">r</span>
-<span class="size-8">g</span>
-<span class="size-8">e</span>
-<span class="size-8">r</span>
-<span class="size-4 lz77" data-length="4" data-dist="10"> ham</span>
-<span class="size-4 lz77" data-length="3" data-dist="4"> ha</span>
-<span class="size-2 lz77" data-length="8" data-dist="17"> hamburg</span>
-<span class="size-3 lz77" data-length="5" data-dist="8"> hamb</span>
-<span class="size-2 lz77" data-length="10" data-dist="30"> hamburger</span>
-</pre>
-          </div>
+          <div part="gz-container" class="gz-container heatmap"></div>
         </section>
-        <section class="backref">
+        <section class="backref" hidden="">
           <h2>Back references</h2>
           <p>
             Orange text represents literal text from the gzip stream. Blue text
             is test that is a back reference to previous text in the gzip
             stream. Hover over a back references to see what text it references.
           </p>
-          <div part="gz-container" class="gz-container backref">
-            <style></style>
-            <pre class="backrefs">
-<span class="literal pos-0">h</span>
-<span class="literal pos-1">a</span>
-<span class="literal pos-2">m</span>
-<span class="literal pos-3"> </span>
-<span class="literal pos-4">h</span>
-<span class="literal pos-5">a</span>
-<span class="literal pos-6">m</span>
-<span class="literal pos-7">b</span>
-<span class="literal pos-8">u</span>
-<span class="literal pos-9">r</span>
-<span class="literal pos-10">g</span>
-<span class="literal pos-11">e</span>
-<span class="literal pos-12">r</span>
-<span class="lz77" data-backref-selector=".pos-3, .pos-4, .pos-5, .pos-6">
-<span class="pos-13"> </span>
-<span class="pos-14">h</span>
-<span class="pos-15">a</span>
-<span class="pos-16">m</span></span>
-<span class="lz77" data-backref-selector=".pos-13, .pos-14, .pos-15">
-<span class="pos-17"> </span>
-<span class="pos-18">h</span>
-<span class="pos-19">a</span></span>
-<span class="lz77" data-backref-selector=".pos-3, .pos-4, .pos-5, .pos-6, .pos-7, .pos-8, .pos-9, .pos-10">
-<span class="pos-20"> </span>
-<span class="pos-21">h</span>
-<span class="pos-22">a</span>
-<span class="pos-23">m</span>
-<span class="pos-24">b</span>
-<span class="pos-25">u</span>
-<span class="pos-26">r</span>
-<span class="pos-27">g</span></span>
-<span class="lz77" data-backref-selector=".pos-20, .pos-21, .pos-22, .pos-23, .pos-24">
-<span class="pos-28"> </span>
-<span class="pos-29">h</span>
-<span class="pos-30">a</span>
-<span class="pos-31">m</span>
-<span class="pos-32">b</span></span>
-<span class="lz77" data-backref-selector=".pos-3, .pos-4, .pos-5, .pos-6, .pos-7, .pos-8, .pos-9, .pos-10, .pos-11, .pos-12">
-<span class="pos-33"> </span>
-<span class="pos-34">h</span>
-<span class="pos-35">a</span>
-<span class="pos-36">m</span>
-<span class="pos-37">b</span>
-<span class="pos-38">u</span>
-<span class="pos-39">r</span>
-<span class="pos-40">g</span>
-<span class="pos-41">e</span>
-<span class="pos-42">r</span></span>
-</pre>
-          </div>
+          <div part="gz-container" class="gz-container backref"></div>
         </section>
       </gz-heatmap>
     </div>
-    <script src="gz-heatmap-data.js" type="text/javascript"></script>
-    <script src="gz-heatmap-webapp.js" type="text/javascript"></script>
-    <script type="text/javascript">
-      GZHeatmap.renderIntoDom(
-        window.GZHeatmapData,
-        document.getElementById("root")
-      );
-    </script>
   </body>
 </html>

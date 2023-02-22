@@ -1,5 +1,7 @@
-import { constructBackRefs } from "./constructBackRefs";
-import { constructHeatMap } from "./constructHeatMap";
+import { computeStats, getBytesExpanded } from "./computeStats.js";
+import { constructBackRefs } from "./constructBackRefs.js";
+import { constructHeatMap } from "./constructHeatMap.js";
+import { formatNum } from "./utils.js";
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -78,45 +80,68 @@ template.innerHTML = `
 		/* box-shadow: 0px 10px 20px 2px rgb(255 255 255 / 25%); */
 		filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
 	}
+
+	table.stats {
+		border-collapse: collapse;
+    border-spacing: 0;
+    text-align: left;
+	}
+
+	table.stats :is(td, th) {
+		border-bottom: 0.05rem solid #dadee4;
+		padding: 0.6rem 0.4rem;
+	}
+
+	table.stats > tbody  td:not(:first-child) {
+		font-variant-numeric: tabular-nums;
+		text-align: right;
+	}
 </style>
 
-<h2>Heatmap</h2>
-<p>
-Each character in the gzip stream is given a color representing approximately
-the number of bytes it takes up in the gzip stream. Open the color legend to
-see what colors correspond to what byte sizes.
-</p>
-<details>
-	<summary>Color legend</summary>
-	<ol class="legend">
-		<li class="size-1"><1 B</li>
-		<li class="size-2"><2 B</li>
-		<li class="size-3"><3 B</li>
-		<li class="size-4"><4 B</li>
-		<li class="size-5"><5 B</li>
-		<li class="size-6"><6 B</li>
-		<li class="size-7"><7 B</li>
-		<li class="size-8"><8 B</li>
-		<li class="size-9"><9 B</li>
-		<li class="size-10"><10 B</li>
-		<li class="size-11"><11 B</li>
-		<li class="size-12"><12 B</li>
-		<li class="size-13"><13 B</li>
-		<li class="size-14"><14 B</li>
-		<li class="size-15"><15 B</li>
-		<li class="size-16"><16 B</li>
-		<li class="size-17">>=17 B</li>
-	</ol>
-</details>
-<div part="gz-container" class="gz-container heatmap"></div>
-<h2>Back references</h2>
-<p>
-Orange text represents literal text from the gzip stream.
-Blue text is test that is a back reference to previous text
-in the gzip stream. Hover over a back references to see what
-text it references.
-</p>
-<div part="gz-container" class="gz-container backref"></div>
+<h2>Stats</h2>
+<div part="stats"></div>
+<p class="message"></p>
+<section class="heatmap">
+	<h2>Heatmap</h2>
+	<p>
+	Each character in the gzip stream is given a color representing approximately
+	the number of bytes it takes up in the gzip stream. Open the color legend to
+	see what colors correspond to what byte sizes.
+	</p>
+	<details>
+		<summary>Color legend</summary>
+		<ol class="legend">
+			<li class="size-1"><1 B</li>
+			<li class="size-2"><2 B</li>
+			<li class="size-3"><3 B</li>
+			<li class="size-4"><4 B</li>
+			<li class="size-5"><5 B</li>
+			<li class="size-6"><6 B</li>
+			<li class="size-7"><7 B</li>
+			<li class="size-8"><8 B</li>
+			<li class="size-9"><9 B</li>
+			<li class="size-10"><10 B</li>
+			<li class="size-11"><11 B</li>
+			<li class="size-12"><12 B</li>
+			<li class="size-13"><13 B</li>
+			<li class="size-14"><14 B</li>
+			<li class="size-15"><15 B</li>
+			<li class="size-16"><16 B</li>
+			<li class="size-17">>=17 B</li>
+		</ol>
+	</details>
+	<div part="gz-container" class="gz-container heatmap"></div>
+</section>
+<section class="backref">
+	<h2>Back references</h2>
+	<p>
+	Orange text represents literal text from the gzip stream.
+	Blue text is test that is a back reference to previous text
+	in the gzip stream. Hover over a back references to see what
+	text it references.
+	</p>
+	<div part="gz-container" class="gz-container backref"></div>
+</section>
 `;
 
 class GZHeatMap extends HTMLElement {
@@ -124,6 +149,10 @@ class GZHeatMap extends HTMLElement {
 	#root;
 	/** @type {Metadata | null | undefined} */
 	#_gzdata;
+	/** @type {HTMLElement} */
+	#message;
+	/** @type {HTMLElement} */
+	#statsContainer;
 	/** @type {HTMLElement} */
 	#heatmapContainer;
 	/** @type {HTMLElement} */
@@ -135,6 +164,12 @@ class GZHeatMap extends HTMLElement {
 		this.#_gzdata = null;
 
 		this.#root.appendChild(template.content.cloneNode(true));
+		this.#message = /** @type {HTMLElement} */ (
+			this.#root.querySelector(".message")
+		);
+		this.#statsContainer = /** @type {HTMLElement} */ (
+			this.#root.querySelector("[part=stats]")
+		);
 		this.#heatmapContainer = /** @type {HTMLElement} */ (
 			this.#root.querySelector(".gz-container.heatmap")
 		);
@@ -193,16 +228,73 @@ class GZHeatMap extends HTMLElement {
 
 	/** @param {Metadata | null | undefined} gzdata */
 	#render(gzdata) {
+		const heatmapSection = /**@type {HTMLElement}*/ (
+			this.#root.querySelector("section.heatmap")
+		);
+		const backRefSection = /**@type {HTMLElement}*/ (
+			this.#root.querySelector("section.backref")
+		);
+
+		this.#message.textContent = "";
 		this.#heatmapContainer.textContent = "";
 		this.#backrefContainer.textContent = "";
 
 		if (gzdata) {
 			const debug = this.debug;
 			// const debug = true;
-			constructHeatMap(gzdata, this.#heatmapContainer, { debug });
-			constructBackRefs(gzdata, this.#backrefContainer, { debug });
+			const stats = computeStats(gzdata);
+			this.#setStats(stats);
+
+			const bytesExpanded = getBytesExpanded(stats);
+			if (bytesExpanded < 50e3) {
+				// Only show character breakdown for small files
+				heatmapSection.hidden = false;
+				backRefSection.hidden = false;
+				constructHeatMap(gzdata, this.#heatmapContainer, { debug });
+				constructBackRefs(gzdata, this.#backrefContainer, { debug });
+			} else {
+				heatmapSection.hidden = true;
+				backRefSection.hidden = true;
+
+				const sizeStr = formatNum(bytesExpanded);
+				this.#message.textContent = `File too large to show character breakdown analysis (size: ${sizeStr} B)`;
+			}
 		}
 	}
+
+	/** @param {import('../shared/computeStats').Stats} stats*/
+	#setStats(stats) {
+		this.#statsContainer.innerHTML = `
+			<table class="stats">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Count</th>
+						<th>Compressed bytes</th><th>Expanded bytes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Literals</td>
+						<td>${formatNum(stats.literals.count)}</td>
+						<td>${formatNum(bitsToBytes(stats.literals.bitsCompressed))} B</td>
+						<td>${formatNum(stats.literals.bytesExpanded)} B</td>
+					</tr>
+					<tr>
+						<td>LZ77 Backrefs</td>
+						<td>${formatNum(stats.lz77s.count)}</td>
+						<td>${formatNum(bitsToBytes(stats.lz77s.bitsCompressed))} B</td>
+						<td>${formatNum(stats.lz77s.bytesExpanded)} B</td>
+					</tr>
+				</tbody>
+			</table>
+		`;
+	}
+}
+
+/** @type {(bits: number) => number} */
+function bitsToBytes(bits) {
+	return Math.ceil(bits / 8);
 }
 
 window.customElements.define("gz-heatmap", GZHeatMap);
