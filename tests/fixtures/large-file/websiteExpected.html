@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Examine a heatmap of gzip files to better understand how gzip compresses your code"
+    />
+    <title>GZ Heatmap</title>
+    <style>
+      body {
+        color: white;
+        background-color: #252526;
+      }
+
+      gz-heatmap::part(gz-container) {
+        font-size: 2rem;
+      }
+    </style>
+    <script
+      type="module"
+      crossorigin=""
+      src="/gz-heatmap/assets/index.js"
+    ></script>
+  </head>
+  <body>
+    <div id="main">
+      <h1>GZ Heatmap</h1>
+      <p>Upload a text file to see how GZip compresses your file.</p>
+      <form
+        method="#"
+        action="get"
+        style="
+          display: flex;
+          gap: 8px;
+          flex-direction: column;
+          margin-bottom: 1rem;
+        "
+      >
+        <label style="display: flex; gap: 8px"
+          >URL:<input
+            type="text"
+            name="url"
+            value=""
+            style="flex: 1 1 auto; min-width: 150px; max-width: 768px" /></label
+        ><label style="display: flex; gap: 8px"
+          >Upload file:<input type="file" name="file"
+        /></label>
+        <div>
+          <input type="submit" /><button
+            type="button"
+            data-test-id="load-example"
+          >
+            Load example
+          </button>
+        </div>
+      </form>
+      <h2>google.html</h2>
+      <p>Compressed size: 53,210 B</p>
+      <gz-heatmap>
+        <style>
+          :host {
+            display: block;
+          }
+          :host([hidden]) {
+            display: none;
+          }
+
+          .legend {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-family: monospace;
+            text-shadow: 1px 1px 2px black;
+            font-size: 1.5rem;
+          }
+
+          .legend > li {
+            display: inline-block;
+            padding: 0 8px;
+          }
+
+          .gz-container pre {
+            color: #fff;
+            white-space: pre-wrap;
+            word-break: break-all;
+
+            /* offset-x | offset-y | blur-radius | color */
+            text-shadow: 1px 1px 2px black;
+          }
+
+          .heatmap span {
+            /* padding: 2px 0; */
+            /* line-height: 2.2rem; */
+          }
+
+          .size-1 {
+            background-color: #000560;
+          } /* midnight blue */
+          .size-2 {
+            background-color: #023d9a;
+          } /* dark blue */
+          .size-3 {
+            background-color: #005fd3;
+          } /* royal blue */
+          .size-4 {
+            background-color: #0186c0;
+          } /* teal */
+          .size-5 {
+            background-color: #4ab03d;
+          } /* emerald green */
+          .size-6 {
+            background-color: #b5d000;
+          } /* chartreuse (lime green) */
+          .size-7 {
+            background-color: #ebd109;
+          } /* yellow */
+          .size-8 {
+            background-color: #fba70f;
+          } /* orange */
+          .size-9 {
+            background-color: #ee0000;
+          } /* bright red */
+          .size-10 {
+            background-color: #d00000;
+          } /* dark red 1 */
+          .size-11 {
+            background-color: #b20000;
+          } /* dark red 2 */
+          .size-12 {
+            background-color: #950000;
+          } /* dark red 3 */
+          .size-13 {
+            background-color: #770000;
+          } /* dark red 4 */
+          .size-14 {
+            background-color: #5a0000;
+          } /* dark red 5 */
+          .size-15 {
+            background-color: #3c0000;
+          } /* dark red 6 */
+          .size-16 {
+            background-color: #1e0000;
+          } /* dark red 7 */
+          .size-17 {
+            background-color: #000000;
+          } /* dark red 8 */
+
+          .backrefs .literal {
+            display: inline-block;
+            background-color: #fba70f;
+            transition: all ease 0.2s;
+          }
+
+          .backrefs .lz77 span {
+            display: inline-block;
+            background-color: #005fd3;
+            transition: all ease 0.2s;
+          }
+
+          /* https://blog.logrocket.com/three-ways-style-css-box-shadow-effects/ */
+          .backrefs .lz77.selected span {
+            /* transform: scale(1.1); */
+            transform: translateY(-5px);
+            /* box-shadow: 0px 10px 20px 2px rgb(255 255 255 / 25%); */
+            filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+          }
+
+          table.stats {
+            border-collapse: collapse;
+            border-spacing: 0;
+            text-align: left;
+          }
+
+          table.stats :is(td, th) {
+            border-bottom: 0.05rem solid #dadee4;
+            padding: 0.6rem 0.4rem;
+          }
+
+          table.stats > tbody td:not(:first-child) {
+            font-variant-numeric: tabular-nums;
+            text-align: right;
+          }
+        </style>
+
+        <h2>Stats</h2>
+        <div part="stats">
+          <table class="stats">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Count</th>
+                <th>Compressed bytes</th>
+                <th>Expanded bytes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Literals</td>
+                <td>22,026</td>
+                <td>19,128 B</td>
+                <td>22,026 B</td>
+              </tr>
+              <tr>
+                <td>LZ77 Backrefs</td>
+                <td>14,675</td>
+                <td>33,934 B</td>
+                <td>176,903 B</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="message">
+          File too large to show character breakdown analysis (size: 198,929 B)
+        </p>
+        <section class="heatmap" hidden="">
+          <h2>Heatmap</h2>
+          <p>
+            Each character in the gzip stream is given a color representing
+            approximately the number of bytes it takes up in the gzip stream.
+            Open the color legend to see what colors correspond to what byte
+            sizes.
+          </p>
+          <details>
+            <summary>Color legend</summary>
+            <ol class="legend">
+              <li class="size-1">&lt;1 B</li>
+              <li class="size-2">&lt;2 B</li>
+              <li class="size-3">&lt;3 B</li>
+              <li class="size-4">&lt;4 B</li>
+              <li class="size-5">&lt;5 B</li>
+              <li class="size-6">&lt;6 B</li>
+              <li class="size-7">&lt;7 B</li>
+              <li class="size-8">&lt;8 B</li>
+              <li class="size-9">&lt;9 B</li>
+              <li class="size-10">&lt;10 B</li>
+              <li class="size-11">&lt;11 B</li>
+              <li class="size-12">&lt;12 B</li>
+              <li class="size-13">&lt;13 B</li>
+              <li class="size-14">&lt;14 B</li>
+              <li class="size-15">&lt;15 B</li>
+              <li class="size-16">&lt;16 B</li>
+              <li class="size-17">&gt;=17 B</li>
+            </ol>
+          </details>
+          <div part="gz-container" class="gz-container heatmap"></div>
+        </section>
+        <section class="backref" hidden="">
+          <h2>Back references</h2>
+          <p>
+            Orange text represents literal text from the gzip stream. Blue text
+            is test that is a back reference to previous text in the gzip
+            stream. Hover over a back references to see what text it references.
+          </p>
+          <div part="gz-container" class="gz-container backref"></div>
+        </section>
+      </gz-heatmap>
+    </div>
+  </body>
+</html>

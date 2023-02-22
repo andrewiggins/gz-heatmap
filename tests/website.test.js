@@ -238,6 +238,19 @@ website("should show gz analysis for valid URL", async (ctx) => {
 	await validateFixture(ctx);
 });
 
+website("should only show stats for large file", async (ctx) => {
+	await ctx.page.goto(serverInfo.url);
+	const [fileChooser] = await Promise.all([
+		ctx.page.waitForFileChooser(),
+		ctx.page.click("input[type=file]"),
+	]);
+	await fileChooser.accept([repoRoot("tests/fixtures/large-file/google.html")]);
+	await ctx.page.click("input[type=submit]");
+
+	await validateSuccessfulLoad(ctx.page);
+	await validateFixture(ctx, "large-file");
+});
+
 website("should show gz analysis for valid file upload", async (ctx) => {
 	await ctx.page.goto(serverInfo.url);
 	const [fileChooser] = await Promise.all([
