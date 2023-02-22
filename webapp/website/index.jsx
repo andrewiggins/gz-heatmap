@@ -3,7 +3,7 @@ import { render } from "preact";
 import { useState, useRef } from "preact/hooks";
 
 import { gzinflate } from "../../src/index.js";
-import svgUrl from "../../tests/fixtures/svg-6-backrefs/image.svg";
+import svgUrl from "../../tests/fixtures/svg-7-hex/image.svg";
 import "../shared/GZHeatMap.js";
 
 /**
