@@ -1,3 +1,5 @@
+/// <reference path="../../src/global.d.ts" />
+
 import { getLZ77TotalBitSize } from "../../src/utils.js";
 
 /**
