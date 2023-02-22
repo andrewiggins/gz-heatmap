@@ -5,6 +5,7 @@ import { useState, useRef } from "preact/hooks";
 import { gzinflate } from "../../src/index.js";
 import svgUrl from "../../tests/fixtures/svg-7-hex/image.svg";
 import "../shared/GZHeatMap.js";
+import { formatNum } from "../shared/utils.js";
 
 /**
  * @typedef {import("preact/hooks").StateUpdater<T>} StateUpdater
@@ -144,7 +145,7 @@ function App() {
 			{data && (
 				<>
 					<h2>{data.label}</h2>
-					<p>Compressed size: {data.size} B</p>
+					<p>Compressed size: {formatNum(data.size)} B</p>
 					<gz-heatmap gzdata={data.metadata}></gz-heatmap>
 				</>
 			)}
